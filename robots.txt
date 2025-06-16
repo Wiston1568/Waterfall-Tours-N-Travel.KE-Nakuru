@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wiston1568.github.io/crazyadventures.KE-Nakuru/sitemap.xml
