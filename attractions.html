@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Attractions | Crazy Adventures</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<meta name="description" content="Crazy Adventures - Discover Kenya’s top attractions in Nakuru. Safari, wildlife, and culture.">
+<meta name="keywords" content="Crazy Adventures, Nakuru, Kenya tourism, Safari, Adventure, Travel Kenya">
+<meta name="author" content="Crazy Adventures Team">
+</head>
+<body>
+
+  <!-- ✅ Fixed and unified header -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo">
+        <img src="images/crazyadventures-logo.png" alt="Crazy Adventures Logo" class="logo-img" />
+      </div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="attractions.html">Attractions</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Explore Kenya’s Top Attractions</h1>
+        <p>From national parks to cultural wonders.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Top Places to Visit</h2>
+      <p>Lake Nakuru, Maasai Mara, Mount Kenya, and more.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Crazy Adventures. All rights reserved.</p>
+  </footer>
+
+  <!-- ✅ Toggle script -->
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
+

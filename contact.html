@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Crazy Adventures</title>
+ <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+
+  <meta name="description" content="Crazy Adventures - Discover Kenya’s top attractions in Nakuru. Safari, wildlife, and culture.">
+<meta name="keywords" content="Crazy Adventures, Nakuru, Kenya tourism, Safari, Adventure, Travel Kenya">
+<meta name="author" content="Crazy Adventures Team">
+</head>
+<body><header class="header">
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/crazyadventures-logo.png" alt="Crazy Adventures Logo" class="logo-img" />
+    </div>
+      <span style="color: var(--white); font-weight: bold;">Crazy Adventures</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="attractions.html">Attractions</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </header>
+  <section class="contact-section" data-aos="fade-up">
+    <h2>Contact Our Team</h2>
+    <p>We're just a message away from providing you with a life changing adventure— reach out through phone, email, or social media.</p>
+
+    <div class="contact-cards">
+
+      <!-- HQ Contact -->
+      <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+        <h3>Head Office</h3>
+        <p><i class="fas fa-phone"></i> <span class="copy-text" onclick="copyText('+1234567890')">+1234567890</span></p>
+        <p><i class="fas fa-envelope"></i> <span class="copy-text" onclick="copyText('info@crazyadventures.com')">info@crazyadventures.com</span></p>
+        <div class="social-icons">
+          <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://instagram.com/crazyadventures" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://facebook.com/crazyadventures" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/crazyadventures" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+      <!-- Staff Contact -->
+      <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+        <h3>John Doe - Tours Manager</h3>
+        <p><i class="fas fa-phone"></i> <span class="copy-text" onclick="copyText('+1234567891')">+1234567891</span></p>
+        <p><i class="fas fa-envelope"></i> <span class="copy-text" onclick="copyText('john@crazyadventures.com')">john@crazyadventures.com</span></p>
+        <div class="social-icons">
+          <a href="https://wa.me/1234567891" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://instagram.com/johndoe" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://facebook.com/johndoe" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/johndoe" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Crazy Adventures. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800 });
+    
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Copied: " + text);
+      });
+    }
+
+    function toggleMenu() {
+      const menu = document.querySelector('.nav-links');
+      menu.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
+<script>
+  function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('show');
+  }
+</script>
