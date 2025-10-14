@@ -1,24 +1,56 @@
-let slideIndex = 0;
+// =========================
+// Waterfall Tours JS
+// Handles mobile menu & slideshow
+// =========================
 
-function showSlides() {
-  const slides = document.getElementsByClassName("slide");
-  if (!slides.length) return; // safety: stop if no slides
+document.addEventListener("DOMContentLoaded", () => {
+  // --- MOBILE MENU TOGGLE ---
+  const toggleBtn = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
 
-  // hide all slides
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+  if (toggleBtn && navLinks) {
+    toggleBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
   }
 
-  // next slide
-  slideIndex++;
-  if (slideIndex > slides.length) slideIndex = 1;
+  // --- SLIDESHOW SETUP ---
+  const slides = document.getElementsByClassName("slide");
+  let slideIndex = 0;
 
-  // show current slide
-  slides[slideIndex - 1].style.display = "block";
+  if (slides.length) {
+    // Initialize slides
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.opacity = 0;
+      slides[i].style.position = "absolute";
+      slides[i].style.top = 0;
+      slides[i].style.left = 0;
+      slides[i].style.width = "100%";
+      slides[i].style.height = "100%";
+      slides[i].style.transition = "opacity 1s ease-in-out";
+      slides[i].style.zIndex = 0;
+    }
 
-  // repeat every 3 seconds
-  setTimeout(showSlides, 3000);
-}
+    slides[0].style.opacity = 1;
+    slides[0].style.zIndex = 1;
 
-// run slideshow only after page fully loads
-window.addEventListener("load", showSlides);
+    // Start slideshow interval
+    setInterval(nextSlide, 4000);
+  }
+
+  function nextSlide() {
+    if (!slides.length) return;
+
+    const current = slides[slideIndex];
+    slideIndex = (slideIndex + 1) % slides.length;
+    const next = slides[slideIndex];
+
+    // Fade in next slide
+    next.style.opacity = 1;
+    next.style.zIndex = 1;
+
+    // Fade out current slide
+    current.style.opacity = 0;
+    current.style.zIndex = 0;
+  }
+});
