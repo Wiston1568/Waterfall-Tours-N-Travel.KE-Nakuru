@@ -1,223 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Crazy Adventures | Discover Kenya</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>Waterfall Tours & Adventures | Discover Kenya</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --forest-green: #2e8b57;
-      --earth-brown: #6b4f2c;
+      --green: #1b5e20;
+      --accent: #43a047;
+      --cream: #f8f8f6;
       --white: #ffffff;
+      --brown: #5d4037;
     }
 
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: #f8f8f6;
-      color: var(--earth-brown);
+      background: var(--cream);
+      color: var(--brown);
     }
 
+    /* NAVBAR */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: var(--green);
+      color: var(--white);
       padding: 1rem 2rem;
-      background: var(--forest-green);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .logo-img {
       max-height: 50px;
-      max-width: 150px;
+      width: auto;
     }
 
     .nav-links {
       list-style: none;
       display: flex;
       gap: 1.5rem;
-      padding: 0;
     }
 
     .nav-links a {
       color: var(--white);
       text-decoration: none;
       font-weight: 500;
+      transition: 0.3s;
     }
 
-    /* Mobile menu toggle */
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
     .menu-toggle {
       display: none;
-      flex-direction: column;
-      cursor: pointer;
       background: none;
       border: none;
-      color: white;
+      color: var(--white);
       font-size: 2rem;
+      cursor: pointer;
     }
 
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(rgba(27,94,32,0.85), rgba(27,94,32,0.5)),
+                  url('https://source.unsplash.com/1600x900/?waterfall,kenya') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 5rem 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      background: var(--white);
+      color: var(--green);
+    }
+
+    /* SLIDESHOW */
+    .slideshow-container {
+      max-width: 600px;
+      margin: 2rem auto;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      animation: fade 1s ease-in-out;
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    @keyframes fade {
+      from {opacity: 0.4;}
+      to {opacity: 1;}
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--green);
+      color: white;
+      text-align: center;
+      padding: 1.2rem;
+      margin-top: 3rem;
+      font-size: 0.95rem;
+    }
+
+    .footer span {
+      display: block;
+      color: var(--accent);
+      margin-top: 0.3rem;
+      font-weight: 600;
+    }
+
+    /* MOBILE */
     @media (max-width: 768px) {
       .menu-toggle {
-        display: flex;
+        display: block;
       }
 
       .nav-links {
         display: none;
         flex-direction: column;
-        background: var(--forest-green);
+        background: var(--green);
         position: absolute;
         top: 70px;
         right: 20px;
         padding: 1rem;
         border-radius: 8px;
-        z-index: 1000;
       }
 
       .nav-links.show {
         display: flex;
       }
-    }
 
-    .hero {
-      background: linear-gradient(rgba(46,139,87,0.85), rgba(46,139,87,0.7)),
-                  url('https://source.unsplash.com/1600x900/?kenya,landscape') no-repeat center center/cover;
-      color: white;
-      text-align: center;
-      padding: 4rem 1rem;
-    }
-
-    .hero-content h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--forest-green);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      margin-top: 1.5rem;
-    }
-
-    .slideshow-container {
-      width: 100%;
-      max-width: 500px;
-      margin: 2rem auto 0 auto;
-      position: relative;
-      min-height: 300px;
-      background: rgba(46,139,87,0.7);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .slide img {
-      width: 100%;
-      max-height: 300px;
-      object-fit: contain;
-      display: block;
-      background: white;
-    }
-
-    .fade {
-      animation: fadeEffect 1s ease-in-out;
-    }
-
-    @keyframes fadeEffect {
-      from { opacity: 0.4; }
-      to { opacity: 1; }
-    }
-
-    /* Slideshow positioning */
-    .desktop-only { display: block; }
-    .mobile-only { display: none; }
-
-    @media (max-width: 768px) {
-      .desktop-only { display: none; }
-      .mobile-only { display: block; }
-    }
-
-    .footer {
-      background: var(--forest-green);
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
+      .hero h1 {
+        font-size: 2rem;
+      }
     }
   </style>
-<meta name="description" content="Crazy Adventures - Discover Kenya’s top attractions in Nakuru. Safari, wildlife, and culture.">
-<meta name="keywords" content="Crazy Adventures, Nakuru, Kenya tourism, Safari, Adventure, Travel Kenya">
-<meta name="author" content="Crazy Adventures Team">
+
+  <meta name="description" content="Waterfall Tours & Adventures - Discover Kenya’s most stunning waterfalls, safaris, and outdoor escapes.">
+  <meta name="keywords" content="Waterfall Tours, Adventures, Kenya, Nakuru, Safari, Travel, Explore, Nature">
+  <meta name="author" content="Wiston1568">
 </head>
 <body>
 
-  <header class="header">
-    <nav class="navbar">
-      <div class="logo">
-        <img src="images/crazyadventures-logo.png" alt="Crazy Adventures Logo" class="logo-img" />
-      </div>
-
-      <button class="menu-toggle">&#9776;</button>
-
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="attractions.html">Attractions</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-
-    <!-- Desktop slideshow -->
-    <div class="slideshow-container desktop-only">
-      <div class="slide fade"><img src="images/crazyadventures-logo.png" alt="Logo Slide" /></div>
-      <div class="slide fade"><img src="images/image1.jpg" alt="Lake Nakuru" /></div>
-      <div class="slide fade"><img src="images/image2.jpg" alt="Crater" /></div>
-      <div class="slide fade"><img src="images/image3.jpg" alt="Safari" /></div>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/waterfall-logo.png" alt="Waterfall Tours Logo" class="logo-img">
     </div>
+    <button class="menu-toggle">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="attractions.html">Attractions</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-    <!-- Hero text -->
-    <div class="hero-content">
-      <h1>Discover Nakuru</h1>
-      <p>Wildlife. Culture. Adventure. All in one place.</p>
-      <a href="contact.html" class="btn">Plan Your Adventure</a>
-      <a Hosted,developed and maintained by Wiston1568</a>
+  <section class="hero">
+    <h1>Discover Kenya’s Hidden Waterfalls</h1>
+    <p>Adventure, nature, and serenity — explore Nakuru’s finest landscapes.</p>
+    <a href="contact.html" class="btn">Plan Your Adventure</a>
+  </section>
 
-      <!-- Mobile slideshow -->
-      <div class="slideshow-container mobile-only">
-        <div class="slide fade"><img src="images/crazyadventures-logo.png" alt="Logo Slide" /></div>
-        <div class="slide fade"><img src="images/image1.jpg" alt="Lake Nakuru" /></div>
-        <div class="slide fade"><img src="images/image2.jpg" alt="Crater" /></div>
-        <div class="slide fade"><img src="images/image3.jpg" alt="Safari" /></div>
-      </div>
-    </div>
-  </header>
+  <div class="slideshow-container">
+    <div class="slide"><img src="images/waterfall1.jpg" alt="Waterfall 1"></div>
+    <div class="slide"><img src="images/waterfall2.jpg" alt="Waterfall 2"></div>
+    <div class="slide"><img src="images/waterfall3.jpg" alt="Waterfall 3"></div>
+  </div>
 
   <footer class="footer">
-    <p>&copy; 2025 Crazy Adventures. All rights reserved.</p>
+    <p>&copy; 2025 Waterfall Tours & Adventures. All rights reserved.</p>
+    <span>Dev by Wiston1568</span>
   </footer>
 
   <script>
     // Mobile nav toggle
     const toggleBtn = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    toggleBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
+    toggleBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-    // Carousel logic
+    // Slideshow
     let slideIndex = 0;
-    showSlides();
 
     function showSlides() {
-      const slides = document.querySelectorAll(".slide");
-      slides.forEach(slide => slide.style.display = "none");
+      const slides = document.querySelectorAll('.slide');
+      slides.forEach(slide => slide.style.display = 'none');
       slideIndex++;
-      if (slideIndex > slides.length) slideIndex = 1;
-      slides[slideIndex - 1].style.display = "block";
+      if(slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex - 1].style.display = 'block';
       setTimeout(showSlides, 3000);
     }
+
+    window.addEventListener('load', showSlides);
   </script>
 
 </body>

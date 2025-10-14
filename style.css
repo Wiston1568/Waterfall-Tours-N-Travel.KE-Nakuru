@@ -1,210 +1,285 @@
-/* === CSS VARIABLES === */
+/* ===== Waterfall Tours & Adventures | Modern Responsive Design ===== */
+
 :root {
-  --forest-green: #2e8b57;
-  --earth-brown: #6b4f2c;
-  --sky-blue: #b3c6c7;
-  --leaf-green: #3b7a4c;
-  --sand: #f8f8f6;
-  --white: #f5f5f5;
+  --green: #1b5e20;
+  --accent: #43a047;
+  --cream: #f8f8f6;
+  --white: #ffffff;
+  --brown: #5d4037;
 }
 
-/* === GLOBAL RESETS === */
+/* Base Styles */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background-color: var(--sand);
-  color: var(--earth-brown);
+  background: var(--cream);
+  color: var(--brown);
+  line-height: 1.6;
 }
 
-/* === NAVBAR === */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: var(--green);
+  color: var(--white);
   padding: 1rem 2rem;
-  background: var(--forest-green);
-  box-shadow: 0 2px 4px rgba(46, 139, 87, 0.1);
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .logo-img {
   max-height: 50px;
-  max-width: 150px;
   width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   gap: 1.5rem;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
   color: var(--white);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: color 0.3s;
 }
 
-.nav-links a:hover {
-  color: var(--leaf-green);
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent);
 }
 
-/* === HERO SECTION === */
-.hero {
-  background: linear-gradient(rgba(46,139,87,0.85), rgba(46,139,87,0.7)),
-              url('https://source.unsplash.com/1600x900/?forest,river,mountains') no-repeat center center/cover;
-  height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: var(--white);
-}
-
-.hero-content {
-  animation: fadeIn 2s ease-out;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
-
-/* === FADE IN ANIMATION === */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* === BUTTON === */
-.btn {
-  background-color: var(--leaf-green);
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  color: var(--white);
-  text-decoration: none;
-  font-weight: bold;
+/* Mobile Menu */
+.menu-toggle {
+  display: none;
+  background: none;
   border: none;
-  transition: background 0.3s ease;
-  display: block;
-  margin: 1.5rem auto 0 auto;
+  color: var(--white);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(rgba(27,94,32,0.85), rgba(27,94,32,0.5)),
+              url('https://source.unsplash.com/1600x900/?waterfall,kenya') center/cover no-repeat;
+  color: var(--white);
   text-align: center;
+  padding: 5rem 1rem;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.btn {
+  background: var(--accent);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
 }
 
 .btn:hover {
-  background-color: var(--forest-green);
+  background: var(--white);
+  color: var(--green);
+  transform: scale(1.05);
 }
 
-/* === INTRO SECTION === */
+/* Intro Sections */
 .intro {
-  background-color: var(--sand);
-  padding: 4rem 2rem;
   text-align: center;
+  padding: 3rem 1rem;
+  background: var(--white);
 }
 
 .intro h2 {
-  font-size: 2rem;
+  color: var(--green);
   margin-bottom: 1rem;
-  color: var(--forest-green);
 }
 
 .intro p {
   max-width: 700px;
   margin: 0 auto;
-  font-size: 1.1rem;
-  color: var(--earth-brown);
+  font-size: 1.05rem;
 }
 
-/* === SLIDESHOW === */
-.slideshow-container {
-  width: 100%;
-  max-width: 500px;
-  margin: 2rem auto 0 auto;
-  position: relative;
-  min-height: 300px;
-  background: linear-gradient(rgba(46,139,87,0.85), rgba(46,139,87,0.7));
-  border-radius: 10px;
+/* Attractions Grid */
+.attractions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2rem;
+  padding: 3rem 2rem;
+}
+
+.attraction-card {
+  background: var(--white);
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.slide img {
+.attraction-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.attraction-card img {
   width: 100%;
-  max-height: 300px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  background: linear-gradient(rgba(46,139,87,0.85), rgba(46,139,87,0.7));
+  height: 200px;
+  object-fit: cover;
 }
 
-
-.fade {
-  animation: fadeEffect 1s ease-in-out;
+.attraction-card h3 {
+  color: var(--green);
+  margin: 1rem;
+  font-size: 1.3rem;
 }
 
-@keyframes fadeEffect {
-  from { opacity: 0.4; }
-  to { opacity: 1; }
+.attraction-card p {
+  margin: 0 1rem 1.2rem;
+  font-size: 0.95rem;
 }
 
-/* === FOOTER === */
-.footer {
-  background-color: var(--forest-green);
-  padding: 1rem;
+/* Coming Soon Section */
+.coming-soon {
   text-align: center;
+  padding: 3rem 1rem;
+  background: var(--accent);
   color: var(--white);
 }
 
-/* === GALLERY SECTION === */
+.coming-soon h2 {
+  margin-bottom: 0.5rem;
+}
+
+/* Gallery Grid */
 .gallery-section {
-  padding: 2rem;
   text-align: center;
+  padding: 3rem 1rem;
+}
+
+.gallery-section h1 {
+  color: var(--green);
+  margin-bottom: 2rem;
 }
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: 1rem;
+  padding: 0 2rem;
 }
 
 .gallery-item img {
-  width: 100%;
-  max-height: 220px;
-  object-fit: cover;
   border-radius: 10px;
-  background: var(--sand);
-  box-shadow: 0 2px 8px rgba(46,139,87,0.12);
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* === MOBILE NAVIGATION === */
-.menu-toggle {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
+.gallery-item img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Contact Section */
+.contact-section {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.contact-section h2 {
+  color: var(--green);
+  margin-bottom: 1rem;
+}
+
+.contact-section p {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.contact-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.contact-card h3 {
+  color: var(--green);
+  margin-bottom: 0.8rem;
+}
+
+.social-icons {
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  color: var(--accent);
+  margin: 0 0.4rem;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--green);
+}
+
+/* Footer */
+.footer {
+  background: var(--green);
   color: var(--white);
-  cursor: pointer;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  font-size: 0.95rem;
+  box-shadow: 0 -3px 8px rgba(0,0,0,0.1);
 }
 
+.footer strong {
+  color: var(--accent);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -213,101 +288,33 @@ body {
   .nav-links {
     display: none;
     flex-direction: column;
-    background-color: var(--forest-green);
+    background: var(--green);
     position: absolute;
     top: 70px;
-    right: 0;
-    width: 100%;
-    text-align: center;
-    z-index: 999;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   }
 
   .nav-links.show {
     display: flex;
   }
 
-  .nav-links li {
-    padding: 1rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
   }
 }
-.contact-section {
-  padding: 4rem 2rem;
-  background: #f0f8ff;
-  text-align: center;
-}
 
-.contact-section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.contact-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.contact-card {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 15px;
-  width: 300px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-.contact-card:hover {
-  transform: translateY(-5px);
-}
-
-.contact-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-
-.contact-card p {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-}
-
-.copy-text {
-  cursor: pointer;
-  color: #0077cc;
-  border-bottom: 1px dashed #0077cc;
-}
-
-.social-icons {
-  margin-top: 1rem;
-}
-
-.social-icons a {
-  font-size: 1.4rem;
-  margin: 0 0.5rem;
-  color: #444;
-  transition: color 0.3s ease;
-}
-.social-icons a:hover {
-  color: #2e8b57;
-}
-.contact-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('crazyadventures-logo.png') no-repeat center center;
-  background-size: 300px;
-  opacity: 0.05; /* Adjust to make it lighter or darker */
-  z-index: 0;
-  pointer-events: none;
-}
-.contact-section {
-  position: relative; /* Needed for the ::before overlay to align */
-  padding: 4rem 2rem;
-  background: #f0f8ff;
-  text-align: center;
-  z-index: 1; /* So text stays above the watermark */
+/* Optional subtle scroll animation */
+html {
+  scroll-behavior: smooth;
 }
