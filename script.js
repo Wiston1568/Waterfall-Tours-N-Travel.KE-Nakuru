@@ -1,9 +1,10 @@
 // =========================
 // Waterfall Tours JS
-// Handles mobile menu, slideshow & attractions animation
+// Handles mobile menu, hero slideshow & attraction card hover slideshows
 // =========================
 
 document.addEventListener("DOMContentLoaded", () => {
+
   // --- MOBILE MENU TOGGLE ---
   const toggleBtn = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
@@ -47,33 +48,47 @@ document.addEventListener("DOMContentLoaded", () => {
     current.style.zIndex = 0;
   }
 
-  // --- FALLING LEAVES FOR ATTRACTIONS GRID ---
-  const attractionsGrid = document.querySelector(".attractions-grid");
+  // --- ATTRACTION CARD HOVER MINI-SLIDESHOW ---
+  const attractionCards = document.querySelectorAll(".attraction-card");
 
-  if (attractionsGrid) {
-    // Add leaves container only once
-    let leavesContainer = document.createElement("div");
-    leavesContainer.id = "leaves-container";
-    attractionsGrid.prepend(leavesContainer);
+  attractionCards.forEach(card => {
+    const img = card.querySelector("img");
+    const images = JSON.parse(card.getAttribute("data-images"));
+    let index = 0;
+    let interval;
 
-    const leavesCount = 20;
+    card.addEventListener("mouseenter", () => {
+      interval = setInterval(() => {
+        index = (index + 1) % images.length;
+        // Smooth crossfade
+        const fadeImg = new Image();
+        fadeImg.src = images[index];
+        fadeImg.style.position = "absolute";
+        fadeImg.style.top = 0;
+        fadeImg.style.left = 0;
+        fadeImg.style.width = "100%";
+        fadeImg.style.height = "100%";
+        fadeImg.style.opacity = 0;
+        fadeImg.style.transition = "opacity 0.7s ease-in-out";
+        card.appendChild(fadeImg);
 
-    for (let i = 0; i < leavesCount; i++) {
-      const leaf = document.createElement("div");
-      leaf.className = "leaf";
+        requestAnimationFrame(() => {
+          fadeImg.style.opacity = 1;
+        });
 
-      const size = 20 + Math.random() * 20;
-      leaf.style.width = `${size}px`;
-      leaf.style.height = `${size}px`;
-      leaf.style.left = `${Math.random() * 100}%`;
-      leaf.style.top = `${Math.random() * -20}%`; // start above
-      leaf.style.animationDuration = `${5 + Math.random() * 5}s`;
-      leaf.style.opacity = 0.5 + Math.random() * 0.5;
-      leaf.style.backgroundImage = "url('images/leaf.png')";
-      leaf.style.backgroundSize = "contain";
-      leaf.style.backgroundRepeat = "no-repeat";
+        setTimeout(() => {
+          img.src = images[index];
+          card.removeChild(fadeImg);
+        }, 700);
 
-      leavesContainer.appendChild(leaf);
-    }
-  }
+      }, 2000); // change image every 2s
+    });
+
+    card.addEventListener("mouseleave", () => {
+      clearInterval(interval);
+      img.src = images[0]; // reset to first image
+      index = 0;
+    });
+  });
+
 });

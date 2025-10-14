@@ -14,7 +14,6 @@
   <meta name="keywords" content="Waterfall Tours, Kenya tourism, Adventure, Safaris, Travel Nakuru, Nature Tours, Waterfall Adventures">
   <meta name="author" content="Waterfall Tours & Adventures Team">
 </head>
-
 <body>
   <!-- HEADER -->
   <header class="header">
@@ -34,10 +33,30 @@
       <button class="menu-toggle">&#9776;</button>
     </nav>
 
+    <!-- HERO CAROUSEL -->
     <div class="hero">
-      <div class="hero-content">
-        <h1>Explore Kenya’s Hidden Gems</h1>
-        <p>From breathtaking waterfalls to unforgettable safaris — your adventure starts here.</p>
+      <div class="slideshow-container">
+        <div class="slide active">
+          <img src="images/karuru-falls.jpg" alt="Karuru Waterfalls">
+          <div class="slide-text">
+            <h2>Karuru Waterfalls</h2>
+            <p>A spectacular multi-tiered waterfall in Aberdare National Park</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="images/lake-nakuru.jpg" alt="Lake Nakuru">
+          <div class="slide-text">
+            <h2>Lake Nakuru</h2>
+            <p>Home to flamingos, rhinos, and breathtaking lake views</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="images/menengai-crater.jpg" alt="Menengai Crater">
+          <div class="slide-text">
+            <h2>Menengai Crater</h2>
+            <p>Explore one of the largest volcanic craters in the world</p>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -51,22 +70,31 @@
     </section>
 
     <section class="attractions-grid">
-      <div class="attraction-card">
+      <!-- Lake Nakuru Card -->
+      <div class="attraction-card" data-images='["images/lake-nakuru.jpg","images/lake-nakuru-2.jpg"]'>
+        <div class="overlay">
+          <h3>Lake Nakuru National Park</h3>
+          <p>Home to flamingos, rhinos, and breathtaking lake views — a must-see destination.</p>
+        </div>
         <img src="images/lake-nakuru.jpg" alt="Lake Nakuru National Park">
-        <h3>Lake Nakuru National Park</h3>
-        <p>Home to flamingos, rhinos, and breathtaking lake views — a must-see destination.</p>
       </div>
 
-      <div class="attraction-card">
+      <!-- Menengai Crater Card -->
+      <div class="attraction-card" data-images='["images/menengai-crater.jpg","images/menengai-crater-2.jpg"]'>
+        <div class="overlay">
+          <h3>Menengai Crater</h3>
+          <p>Explore one of the largest volcanic craters in the world, right in Nakuru County.</p>
+        </div>
         <img src="images/menengai-crater.jpg" alt="Menengai Crater">
-        <h3>Menengai Crater</h3>
-        <p>Explore one of the largest volcanic craters in the world, right in Nakuru County.</p>
       </div>
 
-      <div class="attraction-card">
+      <!-- Karuru Waterfalls Card -->
+      <div class="attraction-card" data-images='["images/karuru-falls.jpg","images/karuru-falls-2.jpg"]'>
+        <div class="overlay">
+          <h3>Karuru Waterfalls</h3>
+          <p>A spectacular multi-tiered waterfall located deep within Aberdare National Park.</p>
+        </div>
         <img src="images/karuru-falls.jpg" alt="Karuru Waterfalls">
-        <h3>Karuru Waterfalls</h3>
-        <p>A spectacular multi-tiered waterfall located deep within Aberdare National Park.</p>
       </div>
     </section>
 
@@ -83,6 +111,7 @@
   </footer>
 
   <!-- External JS -->
-  <script src="js/script.js"></script> <!-- Make sure this file contains mobile menu, leaves, slideshow, and scroll animations -->
+  <script src="js/script.js"></script>
 </body>
 </html>
+
