@@ -6,9 +6,14 @@
   --cream: #f8f8f6;
   --white: #ffffff;
   --brown: #5d4037;
+  --shadow: rgba(0, 0, 0, 0.15);
 }
 
 /* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -21,6 +26,7 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  border-radius: 5px;
 }
 
 /* Navbar */
@@ -34,7 +40,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 .logo-img {
@@ -97,7 +103,11 @@ img {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
 }
 
 .slide img {
@@ -122,7 +132,7 @@ img {
 .hero-content {
   position: relative;
   z-index: 2;
-  color: white;
+  color: var(--white);
   padding: 0 1rem;
 }
 
@@ -179,7 +189,7 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: 2rem;
   padding: 3rem 2rem;
-  position: relative; /* For leaves animation */
+  position: relative;
   overflow: hidden;
 }
 
@@ -197,29 +207,25 @@ img {
 /* Individual leaf animation */
 .leaf {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   pointer-events: none;
   z-index: 0;
   animation: fall linear infinite, sway ease-in-out infinite;
   opacity: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 @keyframes fall {
-  0% {
-    transform: translateY(-10%) rotate(0deg);
-    opacity: 0;
-  }
+  0% { transform: translateY(-10%) rotate(0deg); opacity: 0; }
   10% { opacity: 1; }
-  100% {
-    transform: translateY(110%) rotate(360deg);
-    opacity: 0;
-  }
+  100% { transform: translateY(110%) rotate(360deg); opacity: 0; }
 }
 
 @keyframes sway {
   0% { transform: translateX(0px); }
-  50% { transform: translateX(10px); }
+  50% { transform: translateX(12px); }
   100% { transform: translateX(0px); }
 }
 
@@ -228,20 +234,21 @@ img {
   background: var(--white);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
   position: relative;
-  z-index: 2; /* Above leaves */
+  z-index: 2;
 }
 
 .attraction-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px var(--shadow);
+  filter: brightness(1.05);
 }
 
 .attraction-card img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
 }
 
@@ -325,14 +332,14 @@ img {
 .contact-card {
   background: var(--white);
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 15px var(--shadow);
   padding: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px var(--shadow);
 }
 
 .contact-card h3 {
@@ -363,7 +370,7 @@ img {
   padding: 1.5rem;
   margin-top: 3rem;
   font-size: 0.95rem;
-  box-shadow: 0 -3px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 -3px 8px var(--shadow);
 }
 
 .footer strong {
@@ -385,7 +392,7 @@ img {
     right: 20px;
     padding: 1rem;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px var(--shadow);
   }
 
   .nav-links.show {
@@ -402,6 +409,10 @@ img {
 
   .btn {
     padding: 0.6rem 1.2rem;
+  }
+
+  .attraction-card img {
+    height: 180px;
   }
 }
 

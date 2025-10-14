@@ -15,20 +15,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- HERO SLIDESHOW ---
-  const slides = document.getElementsByClassName("slide");
+  const slides = document.querySelectorAll(".slide");
   let slideIndex = 0;
 
   if (slides.length) {
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].style.opacity = 0;
-      slides[i].style.position = "absolute";
-      slides[i].style.top = 0;
-      slides[i].style.left = 0;
-      slides[i].style.width = "100%";
-      slides[i].style.height = "100%";
-      slides[i].style.transition = "opacity 1s ease-in-out";
-      slides[i].style.zIndex = 0;
-    }
+    slides.forEach(slide => {
+      slide.style.opacity = 0;
+      slide.style.position = "absolute";
+      slide.style.top = 0;
+      slide.style.left = 0;
+      slide.style.width = "100%";
+      slide.style.height = "100%";
+      slide.style.transition = "opacity 1s ease-in-out";
+      slide.style.zIndex = 0;
+    });
 
     slides[0].style.opacity = 1;
     slides[0].style.zIndex = 1;
@@ -37,8 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function nextSlide() {
-    if (!slides.length) return;
-
     const current = slides[slideIndex];
     slideIndex = (slideIndex + 1) % slides.length;
     const next = slides[slideIndex];
@@ -53,33 +51,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const attractionsGrid = document.querySelector(".attractions-grid");
 
   if (attractionsGrid) {
-    // Add leaves container
+    // Add leaves container only once
     let leavesContainer = document.createElement("div");
     leavesContainer.id = "leaves-container";
-    leavesContainer.style.position = "absolute";
-    leavesContainer.style.top = 0;
-    leavesContainer.style.left = 0;
-    leavesContainer.style.width = "100%";
-    leavesContainer.style.height = "100%";
-    leavesContainer.style.pointerEvents = "none";
-    leavesContainer.style.zIndex = 0;
-    attractionsGrid.appendChild(leavesContainer);
+    attractionsGrid.prepend(leavesContainer);
 
     const leavesCount = 20;
 
     for (let i = 0; i < leavesCount; i++) {
       const leaf = document.createElement("div");
-      leaf.classList.add("leaf");
+      leaf.className = "leaf";
 
-      // Randomize initial properties
-      leaf.style.width = `${20 + Math.random() * 20}px`;
-      leaf.style.height = leaf.style.width;
+      const size = 20 + Math.random() * 20;
+      leaf.style.width = `${size}px`;
+      leaf.style.height = `${size}px`;
       leaf.style.left = `${Math.random() * 100}%`;
-      leaf.style.top = `${Math.random() * 100}%`;
+      leaf.style.top = `${Math.random() * -20}%`; // start above
       leaf.style.animationDuration = `${5 + Math.random() * 5}s`;
       leaf.style.opacity = 0.5 + Math.random() * 0.5;
-
-      // Optionally, you can use a background-image leaf instead of img
       leaf.style.backgroundImage = "url('images/leaf.png')";
       leaf.style.backgroundSize = "contain";
       leaf.style.backgroundRepeat = "no-repeat";
