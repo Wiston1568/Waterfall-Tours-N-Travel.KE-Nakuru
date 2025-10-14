@@ -3,16 +3,251 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Attractions | Waterfall Tours & Adventures</title>
+  <title>Attractions | Waterfall Tours N Travel</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- SEO -->
-  <meta name="description" content="Waterfall Tours & Adventures - Discover Kenya’s top attractions. Safaris, scenic tours, and adventure travel.">
+  <meta name="description" content="Waterfall Tours N Travel - Discover Kenya’s top attractions. Safaris, scenic tours, and adventure travel.">
   <meta name="keywords" content="Waterfall Tours, Kenya tourism, Adventure, Safaris, Travel Nakuru, Nature Tours, Waterfall Adventures">
   <meta name="author" content="Waterfall Tours & Adventures Team">
+
+  <!-- Particles.js for naturey background -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+  <style>
+    :root {
+      --green: #1b5e20;
+      --accent: #43a047;
+      --cream: #f8f8f6;
+      --white: #ffffff;
+      --brown: #5d4037;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--green);
+      color: var(--white);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .logo-img {
+      max-height: 50px;
+      width: auto;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: linear-gradient(rgba(27,94,32,0.85), rgba(27,94,32,0.5)),
+                  url('images/hero-waterfall.jpg') center/cover no-repeat;
+      text-align: center;
+      padding: 5rem 1rem;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    }
+
+    /* Particles container */
+    #particles-js {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Intro */
+    .intro {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: var(--white);
+      position: relative;
+      z-index: 1;
+    }
+
+    .intro h2 {
+      color: var(--green);
+      margin-bottom: 1rem;
+    }
+
+    .intro p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+    }
+
+    /* Attractions Grid */
+    .attractions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .attraction-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .attraction-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .attraction-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .attraction-card h3 {
+      color: var(--green);
+      margin: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .attraction-card p {
+      margin: 0 1rem 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    /* Coming Soon Section */
+    .coming-soon {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    .coming-soon h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--green);
+      color: var(--white);
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      box-shadow: 0 -3px 8px rgba(0,0,0,0.1);
+    }
+
+    .footer strong {
+      color: var(--accent);
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--green);
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 1rem;
+        border-radius: 8px;
+        z-index: 200;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -20,8 +255,8 @@
   <header class="header">
     <nav class="navbar">
       <div class="logo">
-        <img src="images/waterfall-logo.png" alt="Waterfall Tours Logo" class="logo-img" />
-        <span style="color: var(--white); font-weight: bold;">Waterfall Tours & Adventures</span>
+        <img src="images/logo.png" alt="Waterfall Tours Logo" class="logo-img" />
+        <span style="color: var(--white); font-weight: bold;">Waterfall Tours N Travel</span>
       </div>
 
       <ul class="nav-links">
@@ -35,6 +270,7 @@
     </nav>
 
     <div class="hero">
+      <div id="particles-js"></div>
       <div class="hero-content">
         <h1>Explore Kenya’s Hidden Gems</h1>
         <p>From breathtaking waterfalls to unforgettable safaris — your adventure starts here.</p>
@@ -78,17 +314,42 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p>&copy; 2025 Waterfall Tours & Adventures. All rights reserved.</p>
+    <p>&copy; 2025 Waterfall Tours N Travel. All rights reserved.</p>
     <p>Developed by <strong>Wiston1568</strong></p>
   </footer>
 
-  <!-- SCRIPTS -->
+  <!-- Scripts -->
   <script>
     // Mobile nav toggle
     const toggleBtn = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    toggleBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
+    toggleBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
+
+    // Animate attraction cards on scroll
+    const cards = document.querySelectorAll('.attraction-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => observer.observe(card));
+
+    // Particles.js configuration (naturey)
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 40 },
+        "size": { "value": 6, "random": true },
+        "shape": { "type": "image",
+                   "image": { "src": "images/leaf.png", "width": 20, "height": 20 } },
+        "move": { "speed": 1, "direction": "bottom", "out_mode": "out" },
+        "opacity": { "value": 0.7, "random": true }
+      },
+      "interactivity": {
+        "events": { "onhover": { "enable": true, "mode": "repulse" } }
+      }
     });
   </script>
 </body>
