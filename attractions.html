@@ -49,6 +49,7 @@
       <p>As a young and growing adventure company, we’re currently curating Kenya’s most scenic and thrilling destinations. 
          Here’s a glimpse of what’s coming soon!</p>
     </section>
+
     <!-- ATTRACTIONS GRID -->
     <section class="attractions-grid">
       <div class="attraction-card">
@@ -99,14 +100,6 @@
       heroSlides.forEach((s, i) => s.style.opacity = i === heroIndex ? 1 : 0);
       heroIndex = (heroIndex + 1) % heroSlides.length;
     }, 3500);
-
-    // --- ATTRACTION SLIDESHOW ---
-    const attractionSlides = document.querySelectorAll(".attraction-slide");
-    let attIndex = 0;
-    setInterval(() => {
-      attractionSlides.forEach((s, i) => s.style.opacity = i === attIndex ? 1 : 0);
-      attIndex = (attIndex + 1) % attractionSlides.length;
-    }, 4000);
   });
   </script>
 </body>
