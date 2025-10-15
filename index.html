@@ -24,7 +24,11 @@
       line-height: 1.6;
     }
 
-    img { max-width: 100%; height: auto; display: block; }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
 
     /* Navbar */
     .navbar {
@@ -80,9 +84,19 @@
       overflow: hidden;
     }
 
-    .hero .slide { display: none; width: 100%; height: 100%; }
-    .hero .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .slideshow-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
 
+    .slide { display: none; width: 100%; height: 100%; }
+    .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Overlay */
     .overlay {
       position: absolute;
       top: 0;
@@ -93,6 +107,7 @@
       z-index: 1;
     }
 
+    /* Hero content */
     .hero-content {
       position: relative;
       z-index: 2;
@@ -156,44 +171,34 @@
       margin-bottom: 40px;
     }
 
-    /* Service Carousel */
-    .service-carousel {
-      position: relative;
-      max-width: 1000px;
-      margin: 30px auto;
-      overflow: hidden;
-      border-radius: 10px;
-    }
-
-    .service-carousel .slide { display: none; width: 100%; }
-    .service-carousel .slide:first-child { display: block; } /* Show first slide immediately */
-
-    .service-carousel .slide img {
-      width: 100%;
-      display: block;
-      border-radius: 10px;
-      transition: opacity 0.6s ease-in-out;
-    }
-
-    .service-text {
-      text-align: center;
-      margin-top: 15px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .service-text h3 { color: var(--green); font-size: 1.8em; margin-bottom: 8px; }
-    .service-text p { color: #555; font-size: 1.1em; }
-
-    /* Scroll Fade-In Animation */
-    .fade-in {
+    .service-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 50px;
+      gap: 20px;
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
 
-    .fade-in.show { opacity: 1; transform: translateY(0); }
+    .service-row.show { opacity: 1; transform: translateY(0); }
+
+    .service-img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .service-img:hover { transform: scale(1.05); }
+
+    .service-text { flex: 1; padding: 20px; }
+
+    .left-img { order: 0; }
+    .right-img { order: 1; }
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -217,8 +222,8 @@
       .hero p { font-size: 1rem; }
       .btn { padding: 0.6rem 1.2rem; }
 
-      .service-text h3 { font-size: 1.5em; }
-      .service-text p { font-size: 1em; }
+      .service-row { flex-direction: column; text-align: center; }
+      .service-img { max-width: 100%; }
     }
   </style>
 
@@ -228,7 +233,6 @@
 </head>
 <body>
 
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">
       <img src="images/logo.png" alt="Waterfall Tours Logo" class="logo-img">
@@ -242,7 +246,6 @@
     </ul>
   </nav>
 
-  <!-- Hero Section -->
   <section class="hero">
     <div class="slideshow-container">
       <div class="slide"><img src="images/waterfall-logo.png" alt="Waterfall 0"></div>
@@ -263,32 +266,25 @@
     <h2>Beyond the Adventure 🌺</h2>
     <p class="intro">Discover local crafts, body art, and traditional treasures made by talented artisans.</p>
 
-    <!-- Beadwork Carousel -->
-    <div class="service-carousel fade-in">
-      <div class="slide"><img src="images/beads1.jpeg" alt="Handcrafted Waist Beads" loading="lazy"></div>
-      <div class="slide"><img src="images/beads2.jpeg" alt="Handcrafted Waist Beads 2" loading="lazy"></div>
-      <div class="slide"><img src="images/waistbeads1.jpeg" alt="Handcrafted Waist Beads 3" loading="lazy"></div>
-      <div class="slide"><img src="images/waistbeads2.jpeg" alt="Handcrafted Waist Beads 4" loading="lazy"></div>
-    </div>
-    <div class="service-text fade-in">
-      <h3>Traditional Beadwork & Embroidery</h3>
-      <p>Handcrafted waist beads, bangles, necklaces, and embroidered pieces celebrating local culture.</p>
+    <!-- Embroidery & Beads -->
+    <div class="service-row fade-in">
+      <img src="images/waist-beads.jpg" alt="Handcrafted Waist Beads" class="service-img left-img">
+      <div class="service-text">
+        <h3>Traditional Beadwork & Embroidery</h3>
+        <p>Handcrafted waist beads, bangles, necklaces, and embroidered pieces celebrating local culture.</p>
+      </div>
     </div>
 
-    <!-- Henna Carousel -->
-    <div class="service-carousel fade-in">
-      <div class="slide"><img src="images/tatto1.jpg" alt="Henna & Tattoo 1" loading="lazy"></div>
-      <div class="slide"><img src="images/tatto2.jpg" alt="Henna & Tattoo 2" loading="lazy"></div>
-      <div class="slide"><img src="images/hinna1.jpeg" alt="Henna & Tattoo 3" loading="lazy"></div>
-      <div class="slide"><img src="images/hinna2.jpeg" alt="Henna & Tattoo 4" loading="lazy"></div>
-    </div>
-    <div class="service-text fade-in">
-      <h3>Henna & Tattoo Art</h3>
-      <p>Express yourself with intricate henna or artistic tattoo designs by skilled local artists.</p>
+    <!-- Tattoos & Henna -->
+    <div class="service-row fade-in">
+      <div class="service-text">
+        <h3>Henna & Tattoo Art</h3>
+        <p>Express yourself with intricate henna or artistic tattoo designs by skilled local artists.</p>
+      </div>
+      <img src="images/tattoo.jpg" alt="Tattoo Art" class="service-img right-img">
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 Waterfall Tours N Travel. All rights reserved.</p>
     <span>Dev by Wiston1568</span>
@@ -300,36 +296,26 @@
     const navLinks = document.querySelector('.nav-links');
     toggleBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-    // Hero Slideshow
-    let heroIndex = 0;
-    function showHeroSlides() {
-      const slides = document.querySelectorAll('.hero .slide');
+    // Slideshow
+    let slideIndex = 0;
+    function showSlides() {
+      const slides = document.querySelectorAll('.slide');
       slides.forEach(slide => slide.style.display = 'none');
-      heroIndex++;
-      if(heroIndex > slides.length) heroIndex = 1;
-      slides[heroIndex - 1].style.display = 'block';
-      setTimeout(showHeroSlides, 3000);
+      slideIndex++;
+      if(slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex - 1].style.display = 'block';
+      setTimeout(showSlides, 3000);
     }
-    window.addEventListener('load', showHeroSlides);
-
-    // Service Carousels
-    const serviceCarousels = document.querySelectorAll('.service-carousel');
-    serviceCarousels.forEach(carousel => {
-      let slideIndex = 0;
-      const slides = carousel.querySelectorAll('.slide');
-      function showSlides() {
-        slides.forEach(slide => slide.style.display = 'none');
-        slideIndex++;
-        if(slideIndex > slides.length) slideIndex = 1;
-        slides[slideIndex - 1].style.display = 'block';
-        setTimeout(showSlides, 4000);
-      }
-      showSlides();
-    });
+    window.addEventListener('load', showSlides);
 
     // Scroll Fade-In Animation
     const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+
+    const appearOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
     const appearOnScroll = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if(!entry.isIntersecting) return;
@@ -337,6 +323,7 @@
         observer.unobserve(entry.target);
       });
     }, appearOptions);
+
     faders.forEach(fader => appearOnScroll.observe(fader));
   </script>
 
