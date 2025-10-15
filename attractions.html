@@ -3,23 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Attractions | Waterfall Tours N Travel</title>
+  <title>Attractions | Waterfall Tours & Adventures</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- SEO -->
-  <meta name="description" content="Waterfall Tours N Travel- Discover Kenya’s top attractions. Safaris, scenic tours, and adventure travel.">
+  <meta name="description" content="Waterfall Tours & Adventures - Discover Kenya’s top attractions. Safaris, scenic tours, and adventure travel.">
   <meta name="keywords" content="Waterfall Tours, Kenya tourism, Adventure, Safaris, Travel Nakuru, Nature Tours, Waterfall Adventures">
   <meta name="author" content="Waterfall Tours & Adventures Team">
 </head>
+
 <body>
   <!-- HEADER -->
   <header class="header">
     <nav class="navbar">
       <div class="logo">
-        <img src="images/logo.png" alt="Waterfall Tours Logo" class="logo-img" />
+        <img src="images/waterfall-logo.png" alt="Waterfall Tours Logo" class="logo-img" />
         <span style="color: var(--white); font-weight: bold;">Waterfall Tours & Adventures</span>
       </div>
 
@@ -33,18 +34,10 @@
       <button class="menu-toggle">&#9776;</button>
     </nav>
 
-    <!-- HERO CAROUSEL (no text overlays) -->
     <div class="hero">
-      <div class="slideshow-container">
-        <div class="slide active">
-          <img src="images/karuru-falls.jpg" alt="Karuru Waterfalls">
-        </div>
-        <div class="slide">
-          <img src="images/lake-nakuru.jpg" alt="Lake Nakuru">
-        </div>
-        <div class="slide">
-          <img src="images/menengai-crater.jpg" alt="Menengai Crater">
-        </div>
+      <div class="hero-content">
+        <h1>Explore Kenya’s Hidden Gems</h1>
+        <p>From breathtaking waterfalls to unforgettable safaris — your adventure starts here.</p>
       </div>
     </div>
   </header>
@@ -58,21 +51,18 @@
     </section>
 
     <section class="attractions-grid">
-      <!-- Lake Nakuru Card -->
       <div class="attraction-card">
         <img src="images/lake-nakuru.jpg" alt="Lake Nakuru National Park">
         <h3>Lake Nakuru National Park</h3>
         <p>Home to flamingos, rhinos, and breathtaking lake views — a must-see destination.</p>
       </div>
 
-      <!-- Menengai Crater Card -->
       <div class="attraction-card">
         <img src="images/menengai-crater.jpg" alt="Menengai Crater">
         <h3>Menengai Crater</h3>
         <p>Explore one of the largest volcanic craters in the world, right in Nakuru County.</p>
       </div>
 
-      <!-- Karuru Waterfalls Card -->
       <div class="attraction-card">
         <img src="images/karuru-falls.jpg" alt="Karuru Waterfalls">
         <h3>Karuru Waterfalls</h3>
@@ -88,11 +78,18 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p>&copy; 2025 Waterfall Tours N Travel. All rights reserved.</p>
+    <p>&copy; 2025 Waterfall Tours & Adventures. All rights reserved.</p>
     <p>Developed by <strong>Wiston1568</strong></p>
   </footer>
 
-  <!-- External JS -->
-  <script src="js/script.js"></script>
+  <!-- SCRIPTS -->
+  <script>
+    // Mobile nav toggle
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggleBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>

@@ -6,14 +6,9 @@
   --cream: #f8f8f6;
   --white: #ffffff;
   --brown: #5d4037;
-  --shadow: rgba(0, 0, 0, 0.15);
 }
 
 /* Base Styles */
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -26,7 +21,6 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
-  border-radius: 5px;
 }
 
 /* Navbar */
@@ -40,7 +34,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 8px var(--shadow);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .logo-img {
@@ -89,7 +83,6 @@ img {
   overflow: hidden;
 }
 
-/* Slideshow */
 .slideshow-container {
   position: absolute;
   top: 0;
@@ -104,11 +97,7 @@ img {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 1.2s ease-in-out;
-}
-
-.slide.active {
-  opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
 
 .slide img {
@@ -118,42 +107,22 @@ img {
   display: block;
 }
 
-/* Slide Text Overlay */
-.slide-text {
+/* Overlay */
+.overlay {
   position: absolute;
-  bottom: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--white);
-  background: rgba(0,0,0,0.45); /* slightly darker for readability */
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  max-width: 90%;
-  text-align: center;
-}
-
-.slide:hover .slide-text,
-.slide.active .slide-text {
-  opacity: 1;
-}
-
-.slide-text h2 {
-  margin: 0 0 0.5rem 0;
-  font-size: 2rem;
-}
-
-.slide-text p {
-  margin: 0;
-  font-size: 1rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35);
+  z-index: 1;
 }
 
 /* Hero Content */
 .hero-content {
   position: relative;
   z-index: 2;
-  color: var(--white);
+  color: white;
   padding: 0 1rem;
 }
 
@@ -212,26 +181,22 @@ img {
   padding: 3rem 2rem;
 }
 
-/* Attraction Cards */
 .attraction-card {
   background: var(--white);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 15px var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-  position: relative;
-  z-index: 2;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .attraction-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px var(--shadow);
-  filter: brightness(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .attraction-card img {
   width: 100%;
-  height: 220px;
+  height: 200px;
   object-fit: cover;
 }
 
@@ -258,6 +223,93 @@ img {
   margin-bottom: 0.5rem;
 }
 
+/* Gallery Grid */
+.gallery-section {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.gallery-section h1 {
+  color: var(--green);
+  margin-bottom: 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  padding: 0 2rem;
+}
+
+.gallery-item img {
+  border-radius: 10px;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Contact Section */
+.contact-section {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.contact-section h2 {
+  color: var(--green);
+  margin-bottom: 1rem;
+}
+
+.contact-section p {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.contact-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.contact-card h3 {
+  color: var(--green);
+  margin-bottom: 0.8rem;
+}
+
+.social-icons {
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  color: var(--accent);
+  margin: 0 0.4rem;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--green);
+}
+
 /* Footer */
 .footer {
   background: var(--green);
@@ -266,7 +318,7 @@ img {
   padding: 1.5rem;
   margin-top: 3rem;
   font-size: 0.95rem;
-  box-shadow: 0 -3px 8px var(--shadow);
+  box-shadow: 0 -3px 8px rgba(0,0,0,0.1);
 }
 
 .footer strong {
@@ -288,7 +340,7 @@ img {
     right: 20px;
     padding: 1rem;
     border-radius: 8px;
-    box-shadow: 0 5px 15px var(--shadow);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   }
 
   .nav-links.show {
@@ -305,18 +357,6 @@ img {
 
   .btn {
     padding: 0.6rem 1.2rem;
-  }
-
-  .attraction-card img {
-    height: 180px;
-  }
-
-  .slide-text h2 {
-    font-size: 1.5rem;
-  }
-
-  .slide-text p {
-    font-size: 0.9rem;
   }
 }
 
