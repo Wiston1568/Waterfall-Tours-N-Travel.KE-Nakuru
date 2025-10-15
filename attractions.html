@@ -16,41 +16,37 @@
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header class="header">
-    <nav class="navbar">
-      <div class="logo">
-        <img src="images/logo.png" alt="Waterfall Tours Logo" class="logo-img" />
-        <span style="color: var(--white); font-weight: bold;">Waterfall Tours & Adventures</span>
-      </div>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Waterfall Tours Logo" class="logo-img" />
+    </div>
+    <button class="menu-toggle">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="attractions.html" class="active">Attractions</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="attractions.html" class="active">Attractions</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+  <!-- HERO SECTION (copied behavior from home page) -->
+  <section class="hero">
+    <div class="slideshow-container">
+      <div class="slide"><img src="images/waterfall-logo.png" alt="Waterfall 0"></div>
+      <div class="slide"><img src="images/image4.jpg" alt="Waterfall 1"></div>
+      <div class="slide"><img src="images/image8.JPG" alt="Waterfall 2"></div>
+      <div class="slide"><img src="images/image10.JPG" alt="Waterfall 3"></div>
+    </div>
 
-      <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
-    </nav>
+    <div class="overlay"></div>
 
-    <!-- HERO (sibling of nav inside header) -->
-    <section class="hero">
-      <div class="slideshow-container">
-        <div class="slide"><img src="images/waterfall-logo.png" alt="Waterfall 0"></div>
-        <div class="slide"><img src="images/image4.jpg" alt="Waterfall 1"></div>
-        <div class="slide"><img src="images/image8.JPG" alt="Waterfall 2"></div>
-        <div class="slide"><img src="images/image10.JPG" alt="Waterfall 3"></div>
-      </div>
-
-      <div class="overlay"></div>
-
-      <div class="hero-content">
-        <h1>Explore Kenya’s Hidden Gems</h1>
-        <p>From breathtaking waterfalls to unforgettable safaris — your adventure starts here.</p>
-      </div>
-    </section>
-  </header>
+    <div class="hero-content">
+      <h1>Explore Kenya’s Hidden Gems</h1>
+      <p>From breathtaking waterfalls to unforgettable safaris — your adventure starts here.</p>
+      <a href="contact.html" class="btn">Start Exploring</a>
+    </div>
+  </section>
 
   <!-- MAIN CONTENT -->
   <main>
@@ -97,9 +93,19 @@
     // Mobile nav toggle
     const toggleBtn = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    toggleBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
+    toggleBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
+
+    // Slideshow (same as homepage)
+    let slideIndex = 0;
+    function showSlides() {
+      const slides = document.querySelectorAll('.slide');
+      slides.forEach(slide => slide.style.display = 'none');
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex - 1].style.display = 'block';
+      setTimeout(showSlides, 3000);
+    }
+    window.addEventListener('load', showSlides);
   </script>
 </body>
 </html>
