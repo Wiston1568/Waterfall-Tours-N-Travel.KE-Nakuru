@@ -30,19 +30,20 @@
     </ul>
   </nav>
 
- <section class="hero">
-  <div class="slideshow-container">
-    <div class="slide"><img src="images/waterfall1.jpg" alt="Waterfall 1"></div>
-    <div class="slide"><img src="images/waterfall2.jpg" alt="Waterfall 2"></div>
-    <div class="slide"><img src="images/waterfall3.jpg" alt="Waterfall 3"></div>
-  </div>
+  <!-- HERO SLIDESHOW -->
+  <section class="hero">
+    <div class="slideshow-container">
+      <div class="slide"><img src="images/waterfall1.jpg" alt="Waterfall 1"></div>
+      <div class="slide"><img src="images/waterfall2.jpg" alt="Waterfall 2"></div>
+      <div class="slide"><img src="images/waterfall3.jpg" alt="Waterfall 3"></div>
+    </div>
 
-  <div class="overlay"></div>
-  <div class="hero-content">
-    <h1>Explore Nakuru’s Natural Beauty</h1>
-    <p>Unforgettable waterfall adventures await</p>
-  </div>
-</section>
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Explore Nakuru’s Natural Beauty</h1>
+      <p>Unforgettable waterfall adventures await</p>
+    </div>
+  </section>
 
   <!-- MAIN CONTENT -->
   <main>
@@ -52,6 +53,14 @@
          Here’s a glimpse of what’s coming soon!</p>
     </section>
 
+    <!-- ATTRACTIONS SLIDESHOW -->
+    <section class="attractions-carousel">
+      <div class="attraction-slide"><img src="images/lake-nakuru.jpg" alt="Lake Nakuru National Park"></div>
+      <div class="attraction-slide"><img src="images/menengai-crater.jpg" alt="Menengai Crater"></div>
+      <div class="attraction-slide"><img src="images/karuru-falls.jpg" alt="Karuru Waterfalls"></div>
+    </section>
+
+    <!-- ATTRACTIONS GRID -->
     <section class="attractions-grid">
       <div class="attraction-card">
         <img src="images/lake-nakuru.jpg" alt="Lake Nakuru National Park">
@@ -86,22 +95,61 @@
 
   <!-- SCRIPTS -->
   <script>
-    // Mobile nav toggle
-    const toggleBtn = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    toggleBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
+    // =========================
+    // Waterfall Tours JS (Attractions Page)
+    // =========================
+    document.addEventListener("DOMContentLoaded", () => {
+      // --- MOBILE MENU TOGGLE ---
+      const toggleBtn = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+      if (toggleBtn && navLinks) {
+        toggleBtn.addEventListener("click", () => {
+          navLinks.classList.toggle("show");
+        });
+      }
 
-    // Slideshow (same as homepage)
-    let slideIndex = 0;
-    function showSlides() {
-      const slides = document.querySelectorAll('.slide');
-      slides.forEach(slide => slide.style.display = 'none');
-      slideIndex++;
-      if (slideIndex > slides.length) slideIndex = 1;
-      slides[slideIndex - 1].style.display = 'block';
-      setTimeout(showSlides, 3000);
-    }
-    window.addEventListener('load', showSlides);
+      // --- HERO SLIDESHOW (same as homepage) ---
+      let slideIndex = 0;
+      const heroSlides = document.querySelectorAll(".slide");
+      function showHeroSlides() {
+        heroSlides.forEach(slide => (slide.style.display = "none"));
+        slideIndex++;
+        if (slideIndex > heroSlides.length) slideIndex = 1;
+        heroSlides[slideIndex - 1].style.display = "block";
+        setTimeout(showHeroSlides, 3000);
+      }
+      if (heroSlides.length > 0) showHeroSlides();
+
+      // --- ATTRACTIONS SLIDESHOW ---
+      const attractionSlides = document.querySelectorAll(".attraction-slide");
+      let attractionIndex = 0;
+
+      if (attractionSlides.length > 0) {
+        attractionSlides.forEach((slide, index) => {
+          slide.style.opacity = index === 0 ? "1" : "0";
+          slide.style.position = "absolute";
+          slide.style.top = "0";
+          slide.style.left = "0";
+          slide.style.width = "100%";
+          slide.style.height = "100%";
+          slide.style.transition = "opacity 1s ease-in-out";
+          slide.style.zIndex = index === 0 ? "1" : "0";
+        });
+
+        setInterval(() => {
+          const current = attractionSlides[attractionIndex];
+          attractionIndex = (attractionIndex + 1) % attractionSlides.length;
+          const next = attractionSlides[attractionIndex];
+
+          current.style.opacity = "0";
+          current.style.zIndex = "0";
+          next.style.opacity = "1";
+          next.style.zIndex = "1";
+        }, 4000);
+      } else {
+        console.warn("⚠️ No .attraction-slide elements found!");
+      }
+    });
   </script>
 </body>
 </html>
