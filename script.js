@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     slides.forEach((slide, i) => {
       slide.style.position = "absolute";
-      slide.style.top = 0;
-      slide.style.left = 0;
+      slide.style.top = "0";
+      slide.style.left = "0";
       slide.style.width = "100%";
       slide.style.height = "100%";
       slide.style.transition = "opacity 1.2s ease-in-out";
@@ -32,7 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(() => {
       slides[current].style.opacity = "0";
       slides[current].style.zIndex = "1";
+
       current = (current + 1) % slides.length;
+
       slides[current].style.opacity = "1";
       slides[current].style.zIndex = "2";
     }, interval);
@@ -60,8 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       images.forEach((img, i) => {
         img.style.position = i === 0 ? "relative" : "absolute";
-        img.style.top = 0;
-        img.style.left = 0;
+        img.style.top = "0";
+        img.style.left = "0";
         img.style.width = "100%";
         img.style.height = "100%";
         img.style.transition = "opacity 0.5s ease-in-out";
