@@ -1,5 +1,5 @@
 // =========================
-// Waterfall Tours JS (Fixed Version)
+// Waterfall Tours JS (Enhanced Version)
 // Handles:
 // - Mobile menu toggle
 // - Homepage hero slideshow
@@ -18,31 +18,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- HOMEPAGE HERO SLIDESHOW ---
-  const slides = document.querySelectorAll(".slide");
-  if (slides.length > 0) {
-    let currentSlide = 0;
-    slides[currentSlide].style.opacity = 1;
+  // --- GENERIC FADE SLIDESHOW FUNCTION ---
+  function createSlideshow(slides, interval = 5000) {
+    if (!slides || slides.length === 0) return;
+    let current = 0;
+    slides.forEach((slide, i) => {
+      slide.style.opacity = i === 0 ? "1" : "0";
+      slide.style.transition = "opacity 1s ease-in-out";
+      slide.style.position = "absolute";
+      slide.style.top = 0;
+      slide.style.left = 0;
+      slide.style.width = "100%";
+      slide.style.height = "100%";
+    });
 
     setInterval(() => {
-      slides[currentSlide].style.opacity = 0;
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].style.opacity = 1;
-    }, 5000); // 5 seconds per slide
+      slides[current].style.opacity = "0";
+      current = (current + 1) % slides.length;
+      slides[current].style.opacity = "1";
+    }, interval);
   }
+
+  // --- HOMEPAGE HERO SLIDESHOW ---
+  const heroSlides = document.querySelectorAll(".slide");
+  createSlideshow(heroSlides, 5000);
 
   // --- ATTRACTIONS PAGE SLIDESHOW ---
   const attractionSlides = document.querySelectorAll(".attraction-slide");
-  if (attractionSlides.length > 0) {
-    let currentAttraction = 0;
-    attractionSlides[currentAttraction].style.opacity = 1;
-
-    setInterval(() => {
-      attractionSlides[currentAttraction].style.opacity = 0;
-      currentAttraction = (currentAttraction + 1) % attractionSlides.length;
-      attractionSlides[currentAttraction].style.opacity = 1;
-    }, 5000); // 5 seconds per slide
-  }
+  createSlideshow(attractionSlides, 5000);
 
   // --- ATTRACTION CARD HOVER SLIDESHOW ---
   const cards = document.querySelectorAll(".attraction-card");
@@ -52,17 +55,29 @@ document.addEventListener("DOMContentLoaded", () => {
       let idx = 0;
       let hoverInterval;
 
+      images.forEach((img, i) => {
+        img.style.position = "absolute";
+        img.style.top = 0;
+        img.style.left = 0;
+        img.style.width = "100%";
+        img.style.height = "100%";
+        img.style.transition = "opacity 0.5s ease-in-out";
+        img.style.opacity = i === 0 ? "1" : "0";
+      });
+
+      card.style.position = "relative";
       card.addEventListener("mouseenter", () => {
         hoverInterval = setInterval(() => {
-          images.forEach((img, i) => img.style.opacity = (i === idx ? 1 : 0));
+          images.forEach((img, i) => img.style.opacity = i === idx ? "1" : "0");
           idx = (idx + 1) % images.length;
         }, 1000);
       });
 
       card.addEventListener("mouseleave", () => {
         clearInterval(hoverInterval);
-        images.forEach((img, i) => img.style.opacity = (i === 0 ? 1 : 0));
+        images.forEach((img, i) => img.style.opacity = i === 0 ? "1" : "0");
       });
     }
   });
+
 });

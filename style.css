@@ -254,6 +254,56 @@ img {
   filter: brightness(1.1);
 }
 
+/* Other Services Section */
+.services-section {
+  background: var(--cream);
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.services-section h2 {
+  color: var(--green);
+  margin-bottom: 2rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.service-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 2rem 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.service-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  color: var(--green);
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  color: var(--brown);
+}
+
 /* Contact Section */
 .contact-section {
   text-align: center;
@@ -427,4 +477,34 @@ img {
 /* Scroll animation */
 html {
   scroll-behavior: smooth;
+}
+
+/* ===== SCROLL FADE-IN ANIMATIONS ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Apply fade-in to multiple sections */
+.attraction-card,
+.gallery-item img,
+.service-card,
+.contact-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.attraction-card.show,
+.gallery-item img.show,
+.service-card.show,
+.contact-card.show {
+  opacity: 1;
+  transform: translateY(0);
 }
