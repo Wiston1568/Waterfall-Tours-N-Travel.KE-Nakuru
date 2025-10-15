@@ -15,6 +15,53 @@
   <meta name="description" content="Waterfall Tours N Travel - Discover Kenya’s best waterfalls, safaris, and natural wonders. Explore adventure tours in Nakuru and beyond." />
   <meta name="keywords" content="Waterfall Tours, Adventures, Kenya, Nakuru, Safari, Travel, Nature, Tours, Hiking" />
   <meta name="author" content="Wiston1568" />
+
+  <style>
+    /* Tabs styling */
+    .tab-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .tabs {
+      display: inline-flex;
+      gap: 1rem;
+      background: var(--green);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--white);
+      padding: 0.8rem 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    .tab-content {
+      display: none;
+      margin-top: 2rem;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 
 <body>
@@ -39,39 +86,65 @@
 
   <!-- CONTACT SECTION -->
   <section class="contact-section" data-aos="fade-up">
-    <h2>Contact Our Team</h2>
-    <p>We’re just a message away from your next adventure. Reach out via WhatsApp, Instagram, Facebook, or pay directly with M-Pesa.</p>
+    <h2>Contact & Payment</h2>
+    <p>Choose a tab below to reach our team or make payments directly via M-Pesa (Pochi la Biashara).</p>
 
-    <div class="contact-cards">
+    <!-- Tabs -->
+    <div class="tab-container">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="contact">Contact & Socials</button>
+        <button class="tab-btn" data-tab="mpesa">M-Pesa (Pochi la Biashara)</button>
+      </div>
+    </div>
 
-      <!-- HQ CONTACT -->
-      <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
-        <h3>Head Office</h3>
-        <p><i class="fas fa-phone"></i> 
-          <span class="copy-text" data-phone="07XXXXXXXX">07XXXXXXXX</span> 
-          <small>(M-Pesa Number)</small>
-        </p>
-        <div class="social-icons">
-          <a href="https://wa.me/07XXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://chat.whatsapp.com/XXXXXXXXXXXX" target="_blank" title="Join our WhatsApp Group"><i class="fab fa-whatsapp"></i> Group</a>
-          <a href="https://instagram.com/waterfalltours" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://facebook.com/waterfalltours" target="_blank"><i class="fab fa-facebook"></i></a>
+    <!-- Tab 1: Contact -->
+    <div id="contact" class="tab-content active">
+      <div class="contact-cards">
+        <!-- HQ CONTACT -->
+        <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+          <h3>Head Office</h3>
+          <p><i class="fas fa-phone"></i> 
+            <span class="copy-text" data-phone="07XXXXXXXX">07XXXXXXXX</span> 
+            <small>(Main Line)</small>
+          </p>
+          <div class="social-icons">
+            <a href="https://wa.me/07XXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://chat.whatsapp.com/XXXXXXXXXXXX" target="_blank" title="Join our WhatsApp Group"><i class="fab fa-whatsapp"></i> Group</a>
+            <a href="https://instagram.com/waterfalltours" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com/waterfalltours" target="_blank"><i class="fab fa-facebook"></i></a>
+          </div>
+        </div>
+
+        <!-- STAFF CONTACT TEMPLATE -->
+        <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+          <h3>Team Contact</h3>
+          <p><i class="fas fa-phone"></i> 
+            <span class="copy-text" data-phone="07XXXXXXXX">07XXXXXXXX</span>
+          </p>
+          <div class="social-icons">
+            <a href="https://wa.me/07XXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com/username" target="_blank"><i class="fab fa-facebook"></i></a>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- STAFF CONTACT TEMPLATE -->
-      <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
-        <h3>Team Contact</h3>
-        <p><i class="fas fa-phone"></i> 
-          <span class="copy-text" data-phone="07XXXXXXXX">07XXXXXXXX</span>
-        </p>
-        <div class="social-icons">
-          <a href="https://wa.me/07XXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://facebook.com/username" target="_blank"><i class="fab fa-facebook"></i></a>
+    <!-- Tab 2: M-Pesa -->
+    <div id="mpesa" class="tab-content">
+      <div class="contact-cards">
+        <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+          <h3>M-Pesa (Pochi la Biashara)</h3>
+          <p>Pay directly to our verified business line below:</p>
+          <p><strong>Business Name:</strong> Waterfall Tours N Travel</p>
+          <p><strong>Paybill / Till:</strong> 123456</p>
+          <p><strong>Account:</strong> Your Name or Booking ID</p>
+          <p><i class="fas fa-phone"></i> 
+            <span class="copy-text" data-phone="07XXXXXXXX">07XXXXXXXX</span> 
+            <small>(For payment confirmation)</small>
+          </p>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -84,7 +157,6 @@
   <!-- SCRIPTS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    // Initialize AOS
     AOS.init({ duration: 800 });
 
     // Copy to clipboard
@@ -102,6 +174,18 @@
     const navLinks = document.querySelector('.nav-links');
     toggleBtn.addEventListener('click', () => {
       navLinks.classList.toggle('show');
+    });
+
+    // Tab switch logic
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
     });
   </script>
 </body>
