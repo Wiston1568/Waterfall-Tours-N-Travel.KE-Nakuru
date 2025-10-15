@@ -1,6 +1,6 @@
 // =========================
 // Waterfall Tours JS
-// Handles mobile menu & hero slideshow
+// Handles mobile menu, hero slideshow & attraction card hover slideshows
 // =========================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -47,5 +47,48 @@ document.addEventListener("DOMContentLoaded", () => {
     current.style.opacity = 0;
     current.style.zIndex = 0;
   }
+
+  // --- ATTRACTION CARD HOVER MINI-SLIDESHOW ---
+  const attractionCards = document.querySelectorAll(".attraction-card");
+
+  attractionCards.forEach(card => {
+    const img = card.querySelector("img");
+    const images = JSON.parse(card.getAttribute("data-images"));
+    let index = 0;
+    let interval;
+
+    card.addEventListener("mouseenter", () => {
+      interval = setInterval(() => {
+        index = (index + 1) % images.length;
+        // Smooth crossfade
+        const fadeImg = new Image();
+        fadeImg.src = images[index];
+        fadeImg.style.position = "absolute";
+        fadeImg.style.top = 0;
+        fadeImg.style.left = 0;
+        fadeImg.style.width = "100%";
+        fadeImg.style.height = "100%";
+        fadeImg.style.opacity = 0;
+        fadeImg.style.transition = "opacity 0.7s ease-in-out";
+        card.appendChild(fadeImg);
+
+        requestAnimationFrame(() => {
+          fadeImg.style.opacity = 1;
+        });
+
+        setTimeout(() => {
+          img.src = images[index];
+          card.removeChild(fadeImg);
+        }, 700);
+
+      }, 2000); // change image every 2s
+    });
+
+    card.addEventListener("mouseleave", () => {
+      clearInterval(interval);
+      img.src = images[0]; // reset to first image
+      index = 0;
+    });
+  });
 
 });

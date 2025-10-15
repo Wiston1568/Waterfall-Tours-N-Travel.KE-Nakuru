@@ -33,12 +33,18 @@
       <button class="menu-toggle">&#9776;</button>
     </nav>
 
-    <!-- HERO SLIDESHOW -->
+    <!-- HERO CAROUSEL (no text overlays) -->
     <div class="hero">
       <div class="slideshow-container">
-        <div class="slide"><img src="images/karuru-falls.jpg" alt="Karuru Waterfalls"></div>
-        <div class="slide"><img src="images/lake-nakuru.jpg" alt="Lake Nakuru"></div>
-        <div class="slide"><img src="images/menengai-crater.jpg" alt="Menengai Crater"></div>
+        <div class="slide active">
+          <img src="images/karuru-falls.jpg" alt="Karuru Waterfalls">
+        </div>
+        <div class="slide">
+          <img src="images/lake-nakuru.jpg" alt="Lake Nakuru">
+        </div>
+        <div class="slide">
+          <img src="images/menengai-crater.jpg" alt="Menengai Crater">
+        </div>
       </div>
     </div>
   </header>
@@ -47,7 +53,8 @@
   <main>
     <section class="intro">
       <h2>Top Attractions to Kickstart Your Journey</h2>
-      <p>As a young and growing adventure company, we’re currently curating Kenya’s most scenic and thrilling destinations. Here’s a glimpse of what’s coming soon!</p>
+      <p>As a young and growing adventure company, we’re currently curating Kenya’s most scenic and thrilling destinations. 
+         Here’s a glimpse of what’s coming soon!</p>
     </section>
 
     <section class="attractions-grid">
@@ -85,24 +92,7 @@
     <p>Developed by <strong>Wiston1568</strong></p>
   </footer>
 
-  <!-- Embedded JS like index.html -->
-  <script>
-    // Mobile nav toggle
-    const toggleBtn = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    toggleBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
-
-    // Slideshow
-    let slideIndex = 0;
-    function showSlides() {
-      const slides = document.querySelectorAll('.slide');
-      slides.forEach(slide => slide.style.display = 'none');
-      slideIndex++;
-      if(slideIndex > slides.length) slideIndex = 1;
-      slides[slideIndex - 1].style.display = 'block';
-      setTimeout(showSlides, 3000);
-    }
-    window.addEventListener('load', showSlides);
-  </script>
+  <!-- External JS -->
+  <script src="js/script.js"></script>
 </body>
 </html>
