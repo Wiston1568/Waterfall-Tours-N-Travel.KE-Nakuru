@@ -13,6 +13,21 @@
   <meta name="description" content="Waterfall Tours N Travel - Explore Kenya’s breathtaking destinations. Wildlife, waterfalls, safaris and adventure await.">
   <meta name="keywords" content="Waterfall Tours, Kenya tourism, Safari, Adventure, Nakuru, Travel Kenya, Waterfalls, Nature">
   <meta name="author" content="Wiston1568">
+
+  <style>
+    /* Optional: placeholder background for lazy images */
+    .gallery-item img {
+      background: #f0f0f0 url('images/spinner.gif') center center no-repeat;
+      min-height: 150px;
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-item { display: none; } /* Initially hide items for progressive loading */
+    .gallery-item.show { display: block; }
+    #load-more { display: block; margin: 20px auto; padding: 10px 20px; cursor: pointer; }
+  </style>
 </head>
 
 <body>
@@ -37,21 +52,23 @@
       <p>Discover the beauty of Kenya through our lens — from majestic waterfalls to untamed wilderness.</p>
 
       <div class="gallery-grid">
-        <div class="gallery-item"><img src="images/waterfall-logo.png" alt="Waterfall Tours Logo"></div>
-        <div class="gallery-item"><img src="images/image1.jpg" alt="Lake Nakuru"></div>
-        <div class="gallery-item"><img src="images/image2.jpg" alt="Menengai Crater"></div>
-        <div class="gallery-item"><img src="images/image3.jpg" alt="Safari Adventure"></div>
-        <div class="gallery-item"><img src="images/image4.jpg" alt="Waterfall 4"></div>
-        <div class="gallery-item"><img src="images/image5.jpg" alt="Waterfall 5"></div>
-        <div class="gallery-item"><img src="images/image7.JPG" alt="Waterfall 7"></div>
-        <div class="gallery-item"><img src="images/image8.JPG" alt="Waterfall 8"></div>
-        <div class="gallery-item"><img src="images/image9.JPG" alt="Waterfall 9"></div>
-        <div class="gallery-item"><img src="images/image10.JPG" alt="Waterfall 10"></div>
-        <div class="gallery-item"><img src="images/karuru-falls.jpg" alt="Waterfall 11"></div>
-        <div class="gallery-item"><img src="images/lake-nakuru.jpg" alt="Waterfall 12"></div>
-        <div class="gallery-item"><img src="images/karuru-falls.jpg" alt="Waterfall 13"></div>
-        <div class="gallery-item"><img src="images/menengai-crater.jpg" alt="Waterfall 14"></div>
+        <div class="gallery-item show"><img src="images/waterfall-logo.png" alt="Waterfall Tours Logo" loading="lazy"></div>
+        <div class="gallery-item show"><img data-src="images/image1.jpg" alt="Lake Nakuru" class="lazy"></div>
+        <div class="gallery-item show"><img data-src="images/image2.jpg" alt="Menengai Crater" class="lazy"></div>
+        <div class="gallery-item show"><img data-src="images/image3.jpg" alt="Safari Adventure" class="lazy"></div>
+        <div class="gallery-item show"><img data-src="images/image4.jpg" alt="Waterfall 4" class="lazy"></div>
+        <div class="gallery-item show"><img data-src="images/image5.jpg" alt="Waterfall 5" class="lazy"></div>
+        <div class="gallery-item"><img data-src="images/image7.jpg" alt="Waterfall 7" class="lazy"></div>
+        <div class="gallery-item"><img data-src="images/image8.jpg" alt="Waterfall 8" class="lazy"></div>
+        <div class="gallery-item"><img data-src="images/image9.jpg" alt="Waterfall 9" class="lazy"></div>
+        <div class="gallery-item"><img data-src="images/image10.jpg" alt="Waterfall 10" class="lazy"></div>
+        <div class="gallery-item"><img data-src="images/karuru-falls.jpg" alt="Waterfall 11" class="lazy"></div>
+        <div class="gallery-item"><img data-src="images/lake-nakuru.jpg" alt="Waterfall 12" class="lazy"></div>
+        <div class="gallery-item"><img data-src="images/karuru-falls.jpg" alt="Waterfall 13" class="lazy"></div>
+        <div class="gallery-item"><img data-src="images/menengai-crater.jpg" alt="Waterfall 14" class="lazy"></div>
       </div>
+
+      <button id="load-more">Load More</button>
     </section>
   </main>
 
@@ -76,6 +93,39 @@
       });
     }, {threshold:0.2});
     fadeElems.forEach(el => observer.observe(el));
+
+    // Lazy loading
+    document.addEventListener("DOMContentLoaded", function() {
+      const lazyImages = document.querySelectorAll('img.lazy');
+      const imgObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.remove('lazy');
+            imgObserver.unobserve(img);
+          }
+        });
+      });
+      lazyImages.forEach(img => imgObserver.observe(img));
+    });
+
+    // Progressive Load More
+    const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+    let currentIndex = 6; // initially show first 6
+    galleryItems.forEach((item, i) => {
+      if(i >= currentIndex) item.classList.remove('show');
+    });
+
+    const loadMoreBtn = document.getElementById('load-more');
+    loadMoreBtn.addEventListener('click', () => {
+      let nextIndex = currentIndex + 6;
+      for(let i=currentIndex; i<nextIndex && i<galleryItems.length; i++){
+        galleryItems[i].classList.add('show');
+      }
+      currentIndex = nextIndex;
+      if(currentIndex >= galleryItems.length) loadMoreBtn.style.display = 'none';
+    });
   </script>
 </body>
 </html>

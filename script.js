@@ -1,5 +1,5 @@
 // =========================
-// Waterfall Tours JS (Smooth Crossfade Version)
+// Waterfall Tours JS (Smooth Crossfade Version + Gallery Lazy Load)
 // =========================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let current = 0;
 
     slides.forEach((slide, i) => {
-      slide.style.position = "absolute";
+      slide.style.position = i === 0 ? "relative" : "absolute";
       slide.style.top = 0;
       slide.style.left = 0;
       slide.style.width = "100%";
@@ -40,24 +40,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- HOMEPAGE HERO SLIDESHOW ---
   const heroSlides = document.querySelectorAll(".slide");
-  if (heroSlides.length > 0) {
-    crossfadeSlideshow(heroSlides, 5000);
-  }
+  if (heroSlides.length > 0) crossfadeSlideshow(heroSlides, 5000);
 
   // --- ATTRACTIONS HERO SLIDESHOW ---
   const attractionSlides = document.querySelectorAll(".attraction-slide");
-  if (attractionSlides.length > 0) {
-    crossfadeSlideshow(attractionSlides, 5000);
-  }
+  if (attractionSlides.length > 0) crossfadeSlideshow(attractionSlides, 5000);
 
   // --- ATTRACTION CARD HOVER SLIDESHOW ---
   const cards = document.querySelectorAll(".attraction-card");
   cards.forEach(card => {
     const images = card.querySelectorAll("img");
     if (images.length > 1) {
-      let idx = 0;
-      let hoverInterval;
-
+      let idx = 0, hoverInterval;
+      card.style.position = "relative";
       images.forEach((img, i) => {
         img.style.position = i === 0 ? "relative" : "absolute";
         img.style.top = 0;
@@ -68,9 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
         img.style.opacity = i === 0 ? "1" : "0";
         img.style.zIndex = i === 0 ? "2" : "1";
       });
-
-      card.style.position = "relative";
-
       card.addEventListener("mouseenter", () => {
         hoverInterval = setInterval(() => {
           images.forEach((img, i) => {
@@ -80,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
           idx = (idx + 1) % images.length;
         }, 1000);
       });
-
       card.addEventListener("mouseleave", () => {
         clearInterval(hoverInterval);
         images.forEach((img, i) => {
@@ -107,8 +98,18 @@ document.addEventListener("DOMContentLoaded", () => {
         img.style.opacity = i === 0 ? "1" : "0";
         img.style.zIndex = i === 0 ? "2" : "1";
       });
-      crossfadeSlideshow(slides, 4000); // 4s per service slide
+      crossfadeSlideshow(slides, 4000);
     }
   });
+
+  // --- GALLERY LAZY LOAD + FADE-IN ---
+  const galleryItems = document.querySelectorAll(".gallery-item");
+  if (galleryItems.length > 0) {
+    galleryItems.forEach((item, i) => {
+      setTimeout(() => {
+        item.classList.add("show");
+      }, i * 200); // staggered fade-in, 200ms apart
+    });
+  }
 
 });
