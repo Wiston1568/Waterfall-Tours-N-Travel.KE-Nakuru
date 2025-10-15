@@ -8,11 +8,6 @@
   <!-- Styles -->
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- SEO -->
-  <meta name="description" content="Waterfall Tours & Adventures - Discover Kenya’s top attractions. Safaris, scenic tours, and adventure travel.">
-  <meta name="keywords" content="Waterfall Tours, Kenya tourism, Adventure, Safaris, Travel Nakuru, Nature Tours, Waterfall Adventures">
-  <meta name="author" content="Waterfall Tours & Adventures Team">
 </head>
 
 <body>
@@ -33,10 +28,18 @@
   <!-- HERO SLIDESHOW -->
   <section class="hero">
     <div class="slideshow-container">
-      <div class="slide"><img src="images/waterfall-logo.png" alt="attraction0"></div>
-      <div class="slide"><img src="images/attraction1.png" alt="attraction1></div>
-      <div class="slide"><img src="images/attraction2.png" alt="attraction2"></div>
-      <div class="slide"><img src="images/attraction3.png" alt="attraction3"></div> 
+      <div class="slide"><img src="images/waterfall-logo.png" alt="Waterfall Adventure"></div>
+      <div class="slide"><img src="images/attraction1.png" alt="Attraction 1"></div>
+      <div class="slide"><img src="images/attraction2.png" alt="Attraction 2"></div>
+      <div class="slide"><img src="images/attraction3.png" alt="Attraction 3"></div>
+    </div>
+
+    <!-- Floating Text Overlay -->
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Explore Kenya’s Hidden Gems 🌍</h1>
+      <p>Discover breathtaking landscapes and unforgettable adventures across the Rift Valley.</p>
+    </div>
   </section>
 
   <!-- MAIN CONTENT -->
@@ -48,10 +51,16 @@
     </section>
 
     <!-- ATTRACTIONS SLIDESHOW -->
-    <section class="attractions-carousel">
-      <div class="attraction-slide"><img src="images/lake-nakuru.jpg" alt="Lake Nakuru National Park"></div>
-      <div class="attraction-slide"><img src="images/menengai-crater.jpg" alt="Menengai Crater"></div>
-      <div class="attraction-slide"><img src="images/karuru-falls.jpg" alt="Karuru Waterfalls"></div>
+    <section class="attraction-hero">
+      <div class="attraction-slideshow">
+        <div class="attraction-slide"><img src="images/lake-nakuru.jpg" alt="Lake Nakuru National Park"></div>
+        <div class="attraction-slide"><img src="images/menengai-crater.jpg" alt="Menengai Crater"></div>
+        <div class="attraction-slide"><img src="images/karuru-falls.jpg" alt="Karuru Waterfalls"></div>
+      </div>
+      <div class="attraction-overlay">
+        <h1>Natural Wonders Await</h1>
+        <p>Each destination tells a story of beauty, wildlife, and serenity.</p>
+      </div>
     </section>
 
     <!-- ATTRACTIONS GRID -->
@@ -87,63 +96,32 @@
     <p>Developed by <strong>Wiston1568</strong></p>
   </footer>
 
-  <!-- SCRIPTS -->
+  <!-- JS -->
   <script>
-    // =========================
-    // Waterfall Tours JS (Attractions Page)
-    // =========================
-    document.addEventListener("DOMContentLoaded", () => {
-      // --- MOBILE MENU TOGGLE ---
-      const toggleBtn = document.querySelector(".menu-toggle");
-      const navLinks = document.querySelector(".nav-links");
-      if (toggleBtn && navLinks) {
-        toggleBtn.addEventListener("click", () => {
-          navLinks.classList.toggle("show");
-        });
-      }
+  document.addEventListener("DOMContentLoaded", () => {
+    // --- MOBILE MENU TOGGLE ---
+    const toggleBtn = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    if (toggleBtn && navLinks) {
+      toggleBtn.addEventListener("click", () => navLinks.classList.toggle("show"));
+    }
 
-      // --- HERO SLIDESHOW (same as homepage) ---
-      let slideIndex = 0;
-      const heroSlides = document.querySelectorAll(".slide");
-      function showHeroSlides() {
-        heroSlides.forEach(slide => (slide.style.display = "none"));
-        slideIndex++;
-        if (slideIndex > heroSlides.length) slideIndex = 1;
-        heroSlides[slideIndex - 1].style.display = "block";
-        setTimeout(showHeroSlides, 3000);
-      }
-      if (heroSlides.length > 0) showHeroSlides();
+    // --- HERO SLIDESHOW ---
+    const heroSlides = document.querySelectorAll(".slide");
+    let heroIndex = 0;
+    setInterval(() => {
+      heroSlides.forEach((s, i) => s.style.opacity = i === heroIndex ? 1 : 0);
+      heroIndex = (heroIndex + 1) % heroSlides.length;
+    }, 3500);
 
-      // --- ATTRACTIONS SLIDESHOW ---
-      const attractionSlides = document.querySelectorAll(".attraction-slide");
-      let attractionIndex = 0;
-
-      if (attractionSlides.length > 0) {
-        attractionSlides.forEach((slide, index) => {
-          slide.style.opacity = index === 0 ? "1" : "0";
-          slide.style.position = "absolute";
-          slide.style.top = "0";
-          slide.style.left = "0";
-          slide.style.width = "100%";
-          slide.style.height = "100%";
-          slide.style.transition = "opacity 1s ease-in-out";
-          slide.style.zIndex = index === 0 ? "1" : "0";
-        });
-
-        setInterval(() => {
-          const current = attractionSlides[attractionIndex];
-          attractionIndex = (attractionIndex + 1) % attractionSlides.length;
-          const next = attractionSlides[attractionIndex];
-
-          current.style.opacity = "0";
-          current.style.zIndex = "0";
-          next.style.opacity = "1";
-          next.style.zIndex = "1";
-        }, 4000);
-      } else {
-        console.warn("⚠️ No .attraction-slide elements found!");
-      }
-    });
+    // --- ATTRACTION SLIDESHOW ---
+    const attractionSlides = document.querySelectorAll(".attraction-slide");
+    let attIndex = 0;
+    setInterval(() => {
+      attractionSlides.forEach((s, i) => s.style.opacity = i === attIndex ? 1 : 0);
+      attIndex = (attIndex + 1) % attractionSlides.length;
+    }, 4000);
+  });
   </script>
 </body>
 </html>
