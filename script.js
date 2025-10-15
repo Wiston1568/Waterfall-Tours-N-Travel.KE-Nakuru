@@ -48,34 +48,4 @@ document.addEventListener("DOMContentLoaded", () => {
     current.style.zIndex = 0;
   }
 
-  // --- ATTRACTION CARD MINI-SLIDESHOW ON HOVER ---
-  const attractionCards = document.querySelectorAll(".attraction-card");
-
-  attractionCards.forEach(card => {
-    const img = card.querySelector("img");
-    const imagesAttr = card.getAttribute("data-images");
-
-    // Only proceed if data-images exists
-    if (!imagesAttr) return;
-
-    const images = JSON.parse(imagesAttr);
-    if (images.length < 2) return; // No slideshow if only one image
-
-    let index = 0;
-    let interval;
-
-    card.addEventListener("mouseenter", () => {
-      interval = setInterval(() => {
-        index = (index + 1) % images.length;
-        img.src = images[index];
-      }, 2000);
-    });
-
-    card.addEventListener("mouseleave", () => {
-      clearInterval(interval);
-      img.src = images[0]; // Reset to first image
-      index = 0;
-    });
-  });
-
 });
