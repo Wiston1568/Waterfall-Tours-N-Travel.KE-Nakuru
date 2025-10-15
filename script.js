@@ -91,4 +91,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // --- SERVICES CAROUSEL ---
+  const serviceCarousels = document.querySelectorAll(".service-carousel");
+  serviceCarousels.forEach(carousel => {
+    const slides = carousel.querySelectorAll("img");
+    if (slides.length > 1) {
+      carousel.style.position = "relative";
+      slides.forEach((img, i) => {
+        img.style.position = i === 0 ? "relative" : "absolute";
+        img.style.top = 0;
+        img.style.left = 0;
+        img.style.width = "100%";
+        img.style.height = "100%";
+        img.style.transition = "opacity 1s ease-in-out";
+        img.style.opacity = i === 0 ? "1" : "0";
+        img.style.zIndex = i === 0 ? "2" : "1";
+      });
+      crossfadeSlideshow(slides, 4000); // 4s per service slide
+    }
+  });
+
 });
