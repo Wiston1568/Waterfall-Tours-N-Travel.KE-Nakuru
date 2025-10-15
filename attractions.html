@@ -33,8 +33,6 @@
       <div class="slide"><img src="images/attraction2.png" alt="Attraction 2"></div>
       <div class="slide"><img src="images/attraction3.png" alt="Attraction 3"></div>
     </div>
-
-    <!-- Floating Text Overlay -->
     <div class="overlay"></div>
     <div class="hero-content">
       <h1>Explore Kenya’s Hidden Gems 🌍</h1>
@@ -44,14 +42,13 @@
 
   <!-- MAIN CONTENT -->
   <main>
-    <section class="intro">
+    <section class="intro fade-in">
       <h2>Top Attractions to Kickstart Your Journey</h2>
-      <p>As a young and growing adventure company, we’re currently curating Kenya’s most scenic and thrilling destinations. 
-         Here’s a glimpse of what’s coming soon!</p>
+      <p>As a young and growing adventure company, we’re curating Kenya’s most scenic and thrilling destinations.</p>
     </section>
 
     <!-- ATTRACTIONS GRID -->
-    <section class="attractions-grid">
+    <section class="attractions-grid fade-in">
       <div class="attraction-card">
         <img src="images/lake-nakuru.jpg" alt="Lake Nakuru National Park">
         <h3>Lake Nakuru National Park</h3>
@@ -71,7 +68,7 @@
       </div>
     </section>
 
-    <section class="coming-soon">
+    <section class="coming-soon fade-in">
       <h2>More Adventures Coming Soon</h2>
       <p>We’re working to bring you curated tours across Kenya — from cultural experiences to extreme adventures. Stay tuned!</p>
     </section>
@@ -89,17 +86,24 @@
     // --- MOBILE MENU TOGGLE ---
     const toggleBtn = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
-    if (toggleBtn && navLinks) {
-      toggleBtn.addEventListener("click", () => navLinks.classList.toggle("show"));
-    }
+    toggleBtn.addEventListener("click", () => navLinks.classList.toggle("show"));
 
     // --- HERO SLIDESHOW ---
-    const heroSlides = document.querySelectorAll(".slide");
+    const heroSlides = document.querySelectorAll(".hero .slide");
     let heroIndex = 0;
     setInterval(() => {
-      heroSlides.forEach((s, i) => s.style.opacity = i === heroIndex ? 1 : 0);
+      heroSlides.forEach((s,i)=> s.style.opacity = i===heroIndex?1:0);
       heroIndex = (heroIndex + 1) % heroSlides.length;
     }, 3500);
+
+    // --- FADE-IN ON SCROLL ---
+    const fadeElems = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add("show");
+      });
+    }, {threshold:0.2});
+    fadeElems.forEach(el => observer.observe(el));
   });
   </script>
 </body>

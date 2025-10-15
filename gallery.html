@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gallery | Waterfall Tours N Travel</title>
   
-  <!-- External Styles -->
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- SEO -->
   <meta name="description" content="Waterfall Tours N Travel - Explore Kenya’s breathtaking destinations. Wildlife, waterfalls, safaris and adventure await.">
@@ -15,29 +16,23 @@
 </head>
 
 <body>
-  <!-- === HEADER === -->
-  <header class="header">
-    <nav class="navbar">
-      <div class="logo">
-        <img src="images/logo.png" alt="Waterfall Tours Logo" class="logo-img" />
-      </div>
-      <button class="menu-toggle">&#9776;</button>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="attractions.html">Attractions</a></li>
-        <li><a href="gallery.html" class="active">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Waterfall Tours Logo" class="logo-img" />
+    </div>
+    <button class="menu-toggle">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="attractions.html">Attractions</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-  <!-- === MAIN CONTENT === -->
+  <!-- MAIN CONTENT -->
   <main>
-    <!-- HERO SLIDESHOW REMAINS INTACT -->
-    <!-- (Assuming this is included elsewhere on your page) -->
-
-    <!-- === GALLERY SECTION === -->
-    <section class="gallery-section">
+    <section class="gallery-section fade-in">
       <h1>Photo Gallery</h1>
       <p>Discover the beauty of Kenya through our lens — from majestic waterfalls to untamed wilderness.</p>
 
@@ -60,20 +55,27 @@
     </section>
   </main>
 
-  <!-- === FOOTER === -->
+  <!-- FOOTER -->
   <footer class="footer">
     <p>&copy; 2025 Waterfall Tours N Travel. All rights reserved.</p>
     <p class="dev-credit">Developed by <a href="https://github.com/wiston1568" target="_blank">Wiston1568</a></p>
   </footer>
 
-  <!-- === SCRIPTS === -->
+  <!-- JS -->
   <script>
     // Mobile nav toggle
     const toggleBtn = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    toggleBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
+    toggleBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
+
+    // Fade-in on scroll
+    const fadeElems = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add("show");
+      });
+    }, {threshold:0.2});
+    fadeElems.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>

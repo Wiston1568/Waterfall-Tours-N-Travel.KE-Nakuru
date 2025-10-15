@@ -9,6 +9,10 @@
 }
 
 /* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -83,7 +87,8 @@ img {
   overflow: hidden;
 }
 
-.slideshow-container {
+.slideshow-container,
+.attraction-slideshow {
   position: absolute;
   top: 0;
   left: 0;
@@ -92,7 +97,8 @@ img {
   z-index: 1;
 }
 
-.slide {
+.slide,
+.attraction-slide {
   position: absolute;
   top: 0;
   left: 0;
@@ -102,39 +108,61 @@ img {
   transition: opacity 1s ease-in-out;
 }
 
-.slide img {
+.slide img,
+.attraction-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
+.attraction-slide:first-child {
+  opacity: 1;
+}
+
 /* Overlay */
-.overlay {
+.overlay,
+.attraction-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.overlay {
   background: rgba(0,0,0,0.35);
   z-index: 1;
 }
 
-/* Hero Content */
+.attraction-overlay {
+  position: relative;
+  z-index: 10;
+  background: rgba(0,0,0,0.45);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 700px;
+  backdrop-filter: blur(4px);
+  color: #f8f8f6;
+  text-align: center;
+}
+
 .hero-content {
   position: relative;
-  z-index: 10; /* ensure above slides */
+  z-index: 10;
   color: white;
   padding: 0 1rem;
 }
 
-.hero h1 {
+.hero h1,
+.attraction-overlay h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
 }
 
-.hero p {
+.hero p,
+.attraction-overlay p {
   font-size: 1.3rem;
   margin-bottom: 1.5rem;
   text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
@@ -176,18 +204,24 @@ img {
 }
 
 /* Attractions Grid */
-.attractions-grid {
+.attractions-grid,
+.gallery-grid,
+.services-grid,
+.contact-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: 2rem;
-  padding: 3rem 2rem;
+  padding: 2rem;
+}
+
+.attractions-grid {
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 }
 
 .attraction-card {
   background: var(--white);
   border-radius: 12px;
   overflow: hidden;
-  position: relative; /* for hover slideshow */
+  position: relative;
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -201,38 +235,17 @@ img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: opacity 0.5s ease-in-out;
 }
 
 .attraction-card h3 {
   color: var(--green);
   margin: 1rem;
   font-size: 1.3rem;
-  position: relative;
-  z-index: 10;
 }
 
 .attraction-card p {
   margin: 0 1rem 1.2rem;
   font-size: 0.95rem;
-  position: relative;
-  z-index: 10;
-}
-
-/* Coming Soon Section */
-.coming-soon {
-  text-align: center;
-  padding: 3rem 1rem;
-  background: var(--accent);
-  color: var(--white);
-}
-
-.coming-soon h2 {
-  margin-bottom: 0.5rem;
 }
 
 /* Gallery Grid */
@@ -247,15 +260,11 @@ img {
 }
 
 .gallery-grid {
-  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  padding: 0 2rem;
 }
 
 .gallery-item img {
   border-radius: 10px;
-  width: 100%;
   height: 220px;
   object-fit: cover;
   transition: transform 0.3s ease, filter 0.3s ease;
@@ -266,7 +275,7 @@ img {
   filter: brightness(1.1);
 }
 
-/* Other Services Section */
+/* Services Section */
 .services-section {
   background: var(--cream);
   padding: 4rem 1rem;
@@ -279,10 +288,7 @@ img {
 }
 
 .services-grid {
-  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  padding: 0 2rem;
 }
 
 .service-card {
@@ -332,13 +338,6 @@ img {
   margin: 0 auto 2rem;
 }
 
-.contact-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  padding: 0 2rem;
-}
-
 .contact-card {
   background: var(--white);
   border-radius: 12px;
@@ -355,10 +354,6 @@ img {
 .contact-card h3 {
   color: var(--green);
   margin-bottom: 0.8rem;
-}
-
-.social-icons {
-  margin-top: 1rem;
 }
 
 .social-icons a {
@@ -383,73 +378,35 @@ img {
   box-shadow: 0 -3px 8px rgba(0,0,0,0.1);
 }
 
-.footer strong {
-  color: var(--accent);
-}
-
-/* ===== ATTRACTION SLIDESHOW SECTION ===== */
-.attraction-hero {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
+/* Coming Soon */
+.coming-soon {
   text-align: center;
+  padding: 3rem 1rem;
+  background: var(--accent);
+  color: var(--white);
 }
 
-.attraction-slideshow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.coming-soon h2 {
+  margin-bottom: 0.5rem;
 }
 
-.attraction-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+/* Scroll & Fade-in Animations */
+html {
+  scroll-behavior: smooth;
+}
+
+.fade-in {
   opacity: 0;
-  transition: opacity 1.2s ease-in-out;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.attraction-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.attraction-slide:first-child {
+.fade-in.show {
   opacity: 1;
+  transform: translateY(0);
 }
 
-.attraction-overlay {
-  position: relative;
-  z-index: 10; /* above slides */
-  background: rgba(0, 0, 0, 0.45);
-  padding: 2rem;
-  border-radius: 1rem;
-  max-width: 700px;
-  backdrop-filter: blur(4px);
-}
-
-.attraction-overlay h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #f8f8f6;
-}
-
-.attraction-overlay p {
-  font-size: 1.1rem;
-  color: #e0e0e0;
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -471,54 +428,17 @@ img {
     display: flex;
   }
 
-  .hero h1 {
+  .hero h1,
+  .attraction-overlay h1 {
     font-size: 2rem;
   }
 
-  .hero p {
+  .hero p,
+  .attraction-overlay p {
     font-size: 1rem;
   }
 
   .btn {
     padding: 0.6rem 1.2rem;
   }
-
-  .attraction-overlay h1 {
-    font-size: 1.8rem;
-  }
-}
-
-/* Scroll animation */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ===== SCROLL FADE-IN ANIMATIONS ===== */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Apply fade-in to multiple sections */
-.attraction-card,
-.gallery-item img,
-.service-card,
-.contact-card {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.attraction-card.show,
-.gallery-item img.show,
-.service-card.show,
-.contact-card.show {
-  opacity: 1;
-  transform: translateY(0);
 }
