@@ -325,6 +325,66 @@ img {
   color: var(--accent);
 }
 
+/* ===== ATTRACTION SLIDESHOW SECTION ===== */
+.attraction-hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+
+.attraction-slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.attraction-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.attraction-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.attraction-slide:first-child {
+  opacity: 1;
+}
+
+.attraction-overlay {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 700px;
+  backdrop-filter: blur(4px);
+}
+
+.attraction-overlay h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #f8f8f6;
+}
+
+.attraction-overlay p {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .menu-toggle {
@@ -357,6 +417,10 @@ img {
 
   .btn {
     padding: 0.6rem 1.2rem;
+  }
+
+  .attraction-overlay h1 {
+    font-size: 1.8rem;
   }
 }
 
