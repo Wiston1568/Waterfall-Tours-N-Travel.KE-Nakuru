@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://wiston1568.github.io/crazyadventures.KE-Nakuru/sitemap.xml
+
+Sitemap: https://wiston1568.github.io/Waterfall-Tours-N-Travel.KE-Nakuru/sitemap.xml

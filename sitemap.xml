@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset 
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
-    <loc>https://wiston1568.github.io/crazyadventures.KE-Nakuru/</loc>
-    <lastmod>2025-06-16</lastmod>
+    <loc>https://wiston1568.github.io/Waterfall-Tours-N-Travel.KE-Nakuru/</loc>
     <priority>1.00</priority>
   </url>
 
   <url>
-    <loc>https://wiston1568.github.io/crazyadventures.KE-Nakuru/gallery.html</loc>
-    <lastmod>2025-06-16</lastmod>
-    <priority>0.80</priority>
+    <loc>https://wiston1568.github.io/Waterfall-Tours-N-Travel.KE-Nakuru/attractions.html</loc>
+    <priority>0.90</priority>
   </url>
 
   <url>
-    <loc>https://wiston1568.github.io/crazyadventures.KE-Nakuru/attractions.html</loc>
-    <lastmod>2025-06-16</lastmod>
-    <priority>0.80</priority>
+    <loc>https://wiston1568.github.io/Waterfall-Tours-N-Travel.KE-Nakuru/gallery.html</loc>
+    <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://wiston1568.github.io/crazyadventures.KE-Nakuru/contact.html</loc>
-    <lastmod>2025-06-16</lastmod>
+    <loc>https://wiston1568.github.io/Waterfall-Tours-N-Travel.KE-Nakuru/contact.html</loc>
     <priority>0.80</priority>
   </url>
 
