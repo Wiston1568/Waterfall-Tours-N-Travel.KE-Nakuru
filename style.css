@@ -1,8 +1,8 @@
 /* ===== Waterfall Tours & Adventures | Modern Responsive Design ===== */
 
 :root {
-  --green: #1b5e20;
-  --accent: #43a047;
+  --green: #0288d1; /* replaced dark green with blue */
+  --accent: #03a9f4; /* replaced green accent with light blue */
   --cream: #f8f8f6;
   --white: #ffffff;
   --brown: #5d4037;
@@ -268,7 +268,7 @@ img {
 }
 
 .gallery-item {
-  display: none; /* hidden until JS shows them progressively */
+  display: none;
 }
 
 .gallery-item.show {
@@ -314,7 +314,6 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
-/* Service Card & Carousel */
 .service-card {
   background: var(--white);
   border-radius: 12px;
