@@ -1,7 +1,3 @@
-// =========================
-// Waterfall Tours JS (Smooth Crossfade Version + Gallery Lazy Load)
-// =========================
-
 document.addEventListener("DOMContentLoaded", () => {
 
   // --- MOBILE MENU TOGGLE ---
